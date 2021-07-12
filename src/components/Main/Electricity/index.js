@@ -1,23 +1,39 @@
-export default () => (
-  <div>
-    <h3>This is the electricity form</h3>
-    <form onSubmit='undefined'>
-      <input type='hidden' value='electricity' />
-      <input type='hidden' value='mwh' />
-      <label htmlFor='electricity_value'>Electricity usage (in MWh):
-        <input name='electricity_value' type='number' />
-      </label>
-      <label htmlFor='country'>Country:
-        <select name='country'>
-          <option value='us'>United States</option>
-        </select>
-      </label>
-      <label htmlFor='state'>State:
-        <select name='state'>
-          <option value='or'>Oregon</option>
-        </select>
-      </label>
-      <button type='submit'>Estimate</button>
-    </form>
-  </div>
-)
+import { useFirestore } from 'react-redux-firebase'
+
+export default () => {
+  const firestore = useFirestore()
+  function addElecToFirestore(event) {
+    event.preventDefault()
+    return firestore.collection(`electricity_estimates`).add({
+      type: event.target.electricity.value,
+      electricity_unit: event.target.unit.value,
+      electricity_value: event.target.electricity_value.value,
+      country: event.target.country.value,
+      state: event.target.state.value,
+    })
+  }
+
+  return (
+    <div>
+      <h3>This is the electricity form</h3>
+      <form onSubmit={addElecToFirestore}>
+        <input type='hidden' name='electricity' value='electricity' />
+        <input type='hidden' name='unit' value='mwh' />
+        <label htmlFor='electricity_value'>Electricity usage (in MWh):
+          <input name='electricity_value' type='number' />
+        </label>
+        <label htmlFor='country'>Country:
+          <select name='country'>
+            <option value='us'>United States</option>
+          </select>
+        </label>
+        <label htmlFor='state'>State:
+          <select name='state'>
+            <option value='or'>Oregon</option>
+          </select>
+        </label>
+        <button type='submit'>Estimate</button>
+      </form>
+    </div>
+  )
+}
