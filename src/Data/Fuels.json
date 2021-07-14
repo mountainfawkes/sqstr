@@ -1,0 +1,66 @@
+[
+  {
+    "name": "Bituminous Coal",
+    "fuel_source_type": "bit",
+    "fuel_source_unit": "btu"
+  },
+  {
+    "name": "Home Heating and Diesel Fuel",
+    "fuel_source_type": "dfo",
+    "fuel_source_unit": "btu"
+  },
+  {
+    "name": "Jet Fuel",
+    "fuel_source_type": "jf",
+    "fuel_source_unit": "btu"
+  },
+  {
+    "name": "Kerosene",
+    "fuel_source_type": "ker",
+    "fuel_source_unit": "btu"
+  },
+  {
+    "name": "Lignite Coal",
+    "fuel_source_type": "lig",
+    "fuel_source_unit": "btu"
+  },
+  {
+    "name": "Municipal Solid Waste",
+    "fuel_source_type": "msw",
+    "fuel_source_unit": "btu"
+  },
+  {
+    "name": "Natural Gas",
+    "fuel_source_type": "ng",
+    "fuel_source_unit": "btu"
+  },
+  {
+    "name": "Petroleum Coke",
+    "fuel_source_type": "pc",
+    "fuel_source_unit": "btu"
+  },
+  {
+    "name": "Propane Gas",
+    "fuel_source_type": "pg",
+    "fuel_source_unit": "btu"
+  },
+  {
+    "name": "Residential Fuel Oil",
+    "fuel_source_type": "rfo",
+    "fuel_source_unit": "btu"
+  },
+  {
+    "name": "Subbituminous Coal",
+    "fuel_source_type": "sub",
+    "fuel_source_unit": "btu"
+  },
+  {
+    "name": "Tire-Derived Fuel",
+    "fuel_source_type": "tdf",
+    "fuel_source_unit": "btu"
+  },
+  { "name": "Waste Oil",
+    "fuel_source_type": "wo",
+    "fuel_source_unit": "btu"
+  }
+]
