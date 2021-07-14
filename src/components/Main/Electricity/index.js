@@ -8,12 +8,12 @@ export default () => (
         <input name='electricity_value' type='number' />
       </label>
       <label htmlFor='country'>Country:
-        <select name='country'>
+        <select name='country' placeholder='United States'>
           <option value='us'>United States</option>
         </select>
       </label>
       <label htmlFor='state'>State:
-        <select name='state'>
+        <select name='state' placeholder='Oregon'>
           <option value='or'>Oregon</option>
         </select>
       </label>
