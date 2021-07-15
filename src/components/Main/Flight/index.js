@@ -1,4 +1,7 @@
-import flightLocations from '../../../Data/FlightLocations'
+import Select from 'react-select'
+import airports from '../../../Data/FlightLocations'
+
+const airportKeys = airports.map(({ iata, name }) => ({ iata, name }))
 
 export default () => (
   <div>
@@ -13,7 +16,7 @@ export default () => (
           name='departure-airport'
           placeholder='PDX - Portland International Airport'
         >
-          {flightLocations.map(airport =>
+          {airports.map(airport =>
             <option value={airport.iata}>
               {
             airport.iata
@@ -29,7 +32,7 @@ export default () => (
           name='destination-airport'
           placeholder='SFO - San Francisco International Airport'
         >
-          {flightLocations.map(airport =>
+          {airports.map(airport =>
             <option value={airport.iata}>
               {
             airport.iata
