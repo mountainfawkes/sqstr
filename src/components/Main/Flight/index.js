@@ -9,15 +9,15 @@ options={airports}
 />
 */ }
 
-const flightEstimate = () => {
-  function handleInput(event) {
+const flightEstimateForm = () => {
+  function handleFlightInput(event) {
     event.preventDefault()
     return console.log({
-      "type": event.target.flight.value,
-      "passengers": event.target.passengers.value,
-      "legs": [
-        { "departure_airport": event.target.departure_airport.value,
-          "destination_airport": event.target.destination_airport.value },
+      type: event.target.flight.value,
+      passengers: event.target.passengers.value,
+      legs: [
+        { departure_airport: event.target.departure_airport.value,
+          destination_airport: event.target.destination_airport.value },
       ],
     })
   }
@@ -25,15 +25,14 @@ const flightEstimate = () => {
   return (
     <div>
       <h3>This is the flight form</h3>
-      <form onSubmit={handleInput}>
+      <form onSubmit={handleFlightInput}>
         <input type='hidden' name='flight' value='flight' />
         <label htmlFor='passengers'>Number of passengers:
           <input name='passengers' type='number' />
         </label>
-        <label htmlFor='departure-airport'>Departure airport:
+        <label htmlFor='departure_airport'>Departure airport:
           <select
-            name='departure-airport'
-            placeholder='PDX - Portland International Airport'
+            name='departure_airport'
           >
             {airports.map(airport =>
               <option value={airport.value}>
@@ -45,10 +44,9 @@ const flightEstimate = () => {
               </option>)}
           </select>
         </label>
-        <label htmlFor='destination-airport'>Destination airport:
+        <label htmlFor='destination_airport'>Destination airport:
           <select
-            name='destination-airport'
-            placeholder='SFO - San Francisco International Airport'
+            name='destination_airport'
           >
             {airports.map(airport =>
               <option value={airport.value}>
@@ -66,4 +64,4 @@ const flightEstimate = () => {
   )
 }
 
-export default flightEstimate
+export default flightEstimateForm
