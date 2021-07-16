@@ -1,66 +1,66 @@
 [
   {
     "name": "Bituminous Coal",
-    "fuel_source_type": "bit",
+    "code": "bit",
     "fuel_source_unit": "btu"
   },
   {
     "name": "Home Heating and Diesel Fuel",
-    "fuel_source_type": "dfo",
+    "code": "dfo",
     "fuel_source_unit": "btu"
   },
   {
     "name": "Jet Fuel",
-    "fuel_source_type": "jf",
+    "code": "jf",
     "fuel_source_unit": "btu"
   },
   {
     "name": "Kerosene",
-    "fuel_source_type": "ker",
+    "code": "ker",
     "fuel_source_unit": "btu"
   },
   {
     "name": "Lignite Coal",
-    "fuel_source_type": "lig",
+    "code": "lig",
     "fuel_source_unit": "btu"
   },
   {
     "name": "Municipal Solid Waste",
-    "fuel_source_type": "msw",
+    "code": "msw",
     "fuel_source_unit": "btu"
   },
   {
     "name": "Natural Gas",
-    "fuel_source_type": "ng",
+    "code": "ng",
     "fuel_source_unit": "btu"
   },
   {
     "name": "Petroleum Coke",
-    "fuel_source_type": "pc",
+    "code": "pc",
     "fuel_source_unit": "btu"
   },
   {
     "name": "Propane Gas",
-    "fuel_source_type": "pg",
+    "code": "pg",
     "fuel_source_unit": "btu"
   },
   {
     "name": "Residential Fuel Oil",
-    "fuel_source_type": "rfo",
+    "code": "rfo",
     "fuel_source_unit": "btu"
   },
   {
     "name": "Subbituminous Coal",
-    "fuel_source_type": "sub",
+    "code": "sub",
     "fuel_source_unit": "btu"
   },
   {
     "name": "Tire-Derived Fuel",
-    "fuel_source_type": "tdf",
+    "code": "tdf",
     "fuel_source_unit": "btu"
   },
   { "name": "Waste Oil",
-    "fuel_source_type": "wo",
+    "code": "wo",
     "fuel_source_unit": "btu"
   }
 ]
