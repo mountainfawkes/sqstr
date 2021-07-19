@@ -1,0 +1,82 @@
+[
+  {
+    "id": "fe2faff6-4347-4535-9de7-a141e67b5b37",
+    "type": "vehicle_make",
+    "attributes": {
+        "name": "Yugo",
+        "number_of_models": 8
+    }
+  },
+  {
+    "id": "865997a6-eb24-404f-b300-34f0706b963d",
+    "type": "vehicle_model",
+    "attributes": {
+        "name": "Gy/yugo GVX",
+        "year": 1986,
+        "vehicle_make": "Yugo"
+    }
+  },
+  {
+    "id": "ef42692a-d85b-4891-8fe9-ef9ccb9a9f0a",
+    "type": "vehicle_model",
+    "attributes": {
+        "name": "GV Plus/GV/Cabrio",
+        "year": 1990,
+        "vehicle_make": "Yugo"
+    }
+  },
+  {
+    "id": "1bd39e76-5da4-4ed8-b6f2-8e71bde3ac96",
+    "type": "vehicle_model",
+    "attributes": {
+        "name": "GV/GVX",
+        "year": 1987,
+        "vehicle_make": "Yugo"
+    }
+  },
+  {
+    "id": "abb8d88d-a019-4991-b177-71c731866094",
+    "type": "vehicle_model",
+    "attributes": {
+        "name": "GV",
+        "year": 1988,
+        "vehicle_make": "Yugo"
+    }
+  },
+  {
+    "id": "31ce03bc-4b97-4a82-bac2-eee5fcfd3f82",
+    "type": "vehicle_model",
+    "attributes": {
+        "name": "GV",
+        "year": 1988,
+        "vehicle_make": "Yugo"
+    }
+  },
+  {
+    "id": "79230761-6e34-4a4a-befc-8042a9dfb397",
+    "type": "vehicle_model",
+    "attributes": {
+        "name": "GV/GVX",
+        "year": 1989,
+        "vehicle_make": "Yugo"
+    }
+  },
+  {
+    "id": "5c3d943f-e5b7-4973-a594-949209628bf5",
+    "type": "vehicle_model",
+    "attributes": {
+        "name": "GV/GVX",
+        "year": 1989,
+        "vehicle_make": "Yugo"
+    }
+  },
+  {
+    "id": "0a86f429-0044-4f6a-bb08-5c7242e62e30",
+    "type": "vehicle_model",
+    "attributes": {
+        "name": "GV Plus/GV/Cabrio",
+        "year": 1990,
+        "vehicle_make": "Yugo"
+    }
+  }
+]
