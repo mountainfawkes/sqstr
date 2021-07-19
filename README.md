@@ -1,70 +1,112 @@
-# Getting Started with Create React App
+# sqstr
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### A React application for an explosive fireworks popup
 
-## Available Scripts
+#### By Jonathan Stull
 
-In the project directory, you can run:
+## **Table of Contents**
 
-### `yarn start`
+<br />
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+* <a href="#about-sqstr">About sqstr</a>
+    * <a href="#technologies-used">Technologies Used</a>
+* <a href="#Component-Architecture">Component Architecture</a>
+* <a href="#Set-Up-instructions">Set Up Instructions</a>
+* <a href="#known-bugs">Known Bugs</a>
+* <a href="#License">License</a>
+* <a href="#Acknowledgements">Acknowledgements</a>
+* <a href="#Contact-Information">Contact Information</a>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<br />
 
-### `yarn test`
+### About the POWDER KEG
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<br />
 
-### `yarn build`
+Right now, there is an emerging market for carbon-based cryptocurrency and an urgent climate crisis. While the emphasis of solutions should be placed on collective action that includes our largest institutions, there does not currently exist a consumer-level service that can estimate individual carbon emissions and recommend direct action in the form of a carbon-based token investment.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+sqstr will change that by providing an engine that recommends the amount of carbon tokens an individual should buy based on the carbon-emitting activities they engage in&mdash;flights, drives, consumed electricity, and a handful of other carbon-intensive activities.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+This tool gathers user input required to formulate a carbon emissions estimate in tonnes backed by a science-based and peer-reviewed methodology. This figure is cross-referenced with the current value of the [UPCO2 carbon-based token](https://universalcarbon.com/) to provide a recommended investment to partly or wholly offset individual carbon emissions.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<br />
 
-### `yarn eject`
+## Component Architecture
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<img src="sqstr.png" alt="diagram of React DOM components" width="700"/>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Technologies Used
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<br />
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- React
+- VS Code
 
-## Learn More
+<br />
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Setup Instructions
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Prerequisites
 
-### Code Splitting
+<br />
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- A text editor like [VS Code](https://code.visualstudio.com/)
 
-### Analyzing the Bundle Size
+<br />
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Installation
 
-### Making a Progressive Web App
+<br />
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+1. Clone repository: `git clone https://github.com/mountainfawkes/sqstr`.
+2. Navigate to the `/sqstr` directory
+3. Open with your preferred text editor to view the code base
 
-### Advanced Configuration
+<br />
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- #### **Run the Program**
 
-### Deployment
+<br />
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+1. Nagivate to project folder using `cd /sqstr`
+2. `npm install` to install dependencies.
+3. `npm start` to run application server
+4. Open http://localhost:3000/ in your preferred browser
 
-### `yarn build` fails to minify
+<br />
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Known Bugs
+
+<br />
+
+* Dependency conflicts have dogged this project since its inception; these may only materialize locally on systems with dependency conflicts higher up in the dependency tree. If necessary, navigate to your root directory to explore the global `node_modules` in the event that dependency conflicts arise. Babel and React Scripts were especially problematic in sqstr's development environment.
+
+<br />
+
+### License
+
+<br />
+
+Copyright (c) 2021 by [Jonathan Stull](https://github.com/jonathanstull)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM.cs, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+<br />
+
+## **Acknowledgements**
+
+<br />
+
+This project was developed alongside the [LearnHowToProgram curriculum](learnhowtoprogram.com) at Epicodus, a coding bootcamp in Portland, Oregon.
+
+This app would not have been possible without the amazing cohort I studied with at Epicodus. A special thanks goes to [Erik Irgens](https://github.com/erik-t-irgens) and [James Henager](https://github.com/jhenager), whose consistent presence and demos of state and classic RPG victory jingles have been instrumental in keeping the torrid pace of Epicodus managable.
+
+<br />
+
+#### Contact Information
+
+- Jonathan Stull: jonathan.d.stull@gmail.com
