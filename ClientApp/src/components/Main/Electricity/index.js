@@ -4,13 +4,25 @@ import countries from '../../../Data/Countries'
 const electricityEstimateForm = () => {
   function handleElectricityInput(event) {
     event.preventDefault()
-    return console.log({
+    const data = {
       type: event.target.type.value,
       electricity_unit: event.target.electricity_unit.value,
       electricity_value: event.target.electricity_value.value,
       country: event.target.country.value,
       state: event.target.state.value,
+    }
+    console.log(process.env.REACT_APP_CARBON_INTERFACE_BEARER_TOKEN)
+    fetch(`https://www.carboninterface.com/api/v1/estimates`, {
+      method: `POST`,
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': `application/json`,
+        'Authorization':
+        `Bearer ${process.env.REACT_APP_CARBON_INTERFACE_BEARER_TOKEN}`,
+      },
     })
+      .then(response => response.json())
+      .then(json => console.log(json.data))
   }
 
   return (
