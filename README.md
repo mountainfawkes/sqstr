@@ -1,6 +1,6 @@
 # sqstr
 
-#### A React application for an explosive fireworks popup
+#### A React application consumer-level carbon offsets recommendations
 
 #### By Jonathan Stull
 
@@ -19,7 +19,7 @@
 
 <br />
 
-### About the POWDER KEG
+### About sqstr
 
 <br />
 
@@ -35,7 +35,7 @@ Please refer to [this document](https://docs.google.com/document/d/1gj2tSQHACrTM
 
 ## Component Architecture
 
-<img src="sqstr.png" alt="diagram of React DOM components" width="700"/>
+<img src="./About/sqstr.png" alt="diagram of React DOM components" width="700"/>
 
 ## Technologies Used
 
