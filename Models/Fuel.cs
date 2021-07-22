@@ -2,6 +2,8 @@ namespace sqstr.Models
 {
   public class Fuel
   {
+    // Estimate properties
+
     public int FuelId { get; set; }
     public float CarbonG { get; set; }
     public float CarbonLb { get; set; }
@@ -11,5 +13,10 @@ namespace sqstr.Models
     public string FuelSourceType { get; set; }
     public string FuelSourceUnit { get; set; }
     public float FuelSourceValue { get; set; }
+
+    // Estimates relationship
+
+    public int EstimateId { get; set; }
+    public Estimate Estimate { get; set; }
   }
 }

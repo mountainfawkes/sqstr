@@ -2,6 +2,8 @@ namespace sqstr.Models
 {
   public class Electricity
   {
+    // Estimate properties
+
     public int ElectricityId { get; set; }
     public float CarbonG { get; set; }
     public float CarbonLb { get; set; }
@@ -14,5 +16,10 @@ namespace sqstr.Models
     public string ElectricityValue { get; set; }
     public string EstimatedAt { get; set; }
     public string State { get; set; }
+
+    // Estimates relationship
+
+    public int EstimateId { get; set; }
+    public Estimate Estimate { get; set; }
   }
 }

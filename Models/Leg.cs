@@ -2,12 +2,15 @@ namespace sqstr.Models
 {
   public class Leg
   {
+    // Leg properties
+
     public int LegId { get; set; }
-    public string DepartureAirport_1 { get; set; }
-    public string DestinationAirport_1 { get; set; }
-    public string DepartureAirport_2 { get; set; }
-    public string DestinationAirport_2 { get; set; }
-    public string DepartureAirport_3 { get; set; }
-    public string DestinationAirport_3 { get; set; }
+    public string DepartureAirport { get; set; }
+    public string DestinationAirport { get; set; }
+
+    // Flights relationship
+
+    public int FlightId { get; set; }
+    public Flight Flight { get; set; }
   }
 }

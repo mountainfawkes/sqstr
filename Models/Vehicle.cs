@@ -2,6 +2,8 @@ namespace sqstr.Models
 {
   public class Vehicle
   {
+    // Estimate properties
+
     public int VehicleId { get; set; }
     public float CarbonG { get; set; }
     public float CarbonLb { get; set; }
@@ -14,5 +16,10 @@ namespace sqstr.Models
     public string VehicleModel { get; set; }
     public string VehicleModelId { get; set; }
     public int VehicleYear { get; set; }
+
+    // Estimates relationship
+
+    public int EstimateId { get; set; }
+    public Estimate Estimate { get; set; }
   }
 }
