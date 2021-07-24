@@ -1,42 +1,26 @@
-using RestSharp;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Net.Http;
-using System.Threading.Tasks;
 using sqstr.Models;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace sqstr.Helpers
 {
   public class CarbonInterfaceHelper
   {
-    // const string baseCarbonUrl = "https://www.carboninterface.com/";
-    // const string carbonCallResource = "api/v1/estimates";
     static readonly string auth = "Bearer " + EnvironmentVariables.CarbonInterfaceBearerToken;
+    static readonly string url = "https://www.carboninterface.com/api/v1/estimates";
 
-    public static async Task<Attributes> CarbonInterfaceCall()
+    public static async Task<HttpResponseMessage> CarbonInterfaceCall(AttributesRequest request)
     {
-      var electricityRequest = new AttributesRequest { 
-        Type = "electricity",
-        Electricity_Unit = "mwh",
-        Electricity_Value = 42,
-        Country = "us",
-        State = "or"
-      };
-
-      var url = "https://www.carboninterface.com/api/v1/estimates";
-      var json = JsonConvert.SerializeObject(electricityRequest);
-      var content = new StringContent(json.ToString(), Encoding.UTF8, "application/json");
+      var json = JsonConvert.SerializeObject(request);
+      var content = new StringContent(json, Encoding.UTF8, "application/json");
       HttpClient httpClient = new HttpClient();
       httpClient.DefaultRequestHeaders.Add("Authorization", auth);
-      HttpRequestMessage message = new HttpRequestMessage(HttpMethod.Post, url);
       var response = await httpClient.PostAsync(url, content);
 
-      var result = response.Content.ReadAsStringAsync().Result;
-      Attributes attributes = JsonConvert.DeserializeObject<Attributes>(result);
-
-      return attributes;
+      return response;
     }
   }
 
