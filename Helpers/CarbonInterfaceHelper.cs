@@ -68,11 +68,11 @@ namespace sqstr.Helpers
     [JsonProperty("vehicle_model_id")]
     public string Vehicle_Model_Id { get; set; }
     
-    [JsonProperty("weight_value")]
-    public string Weight_Value { get; set; }
-    
     [JsonProperty("weight_unit")]
     public string Weight_Unit { get; set; }
+    
+    [JsonProperty("weight_value")]
+    public string Weight_Value { get; set; }
   }
 
   public class ElectricityResponse
