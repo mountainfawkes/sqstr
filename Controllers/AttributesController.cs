@@ -37,13 +37,10 @@ namespace sqstr.Controllers
       var response = await CarbonInterfaceHelper.CarbonInterfaceCall(request);
 
       string result = response.Content.ReadAsStringAsync().Result;
-      Console.WriteLine(result);
 
       JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
-      Console.WriteLine(jsonResponse);
 
       Attributes attributes = JsonConvert.DeserializeObject<Attributes>(jsonResponse["data"]["attributes"].ToString());
-      Console.WriteLine(attributes);
       
       _db.Attributes.Add(attributes);
 
