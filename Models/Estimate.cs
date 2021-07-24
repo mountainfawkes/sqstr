@@ -1,4 +1,7 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace sqstr.Models
 {
@@ -6,17 +9,26 @@ namespace sqstr.Models
   {
     public Estimate()
     {
-      this.Electricities = new HashSet<Electricity>();
-      this.Flights = new HashSet<Flight>();
-      this.Fuels = new HashSet<Fuel>();
-      this.Prices = new HashSet<Price>();
-      this.Shippings = new HashSet<Shipping>();
-      this.Vehicles = new HashSet<Vehicle>();
+      Electricities = new HashSet<Electricity>();
+      Flights = new HashSet<Flight>();
+      Fuels = new HashSet<Fuel>();
+      Prices = new HashSet<Price>();
+      Shippings = new HashSet<Shipping>();
+      Vehicles = new HashSet<Vehicle>();
     }
 
+    // // Overload constructor to parse json response
+    // public Estimate(string interfaceEstimateId)
+    // {
+    //   InterfaceEstimateId = interfaceEstimateId;
+    // }
+
     // Estimate properties
+    [Key]
     public int EstimateId { get; set; }
-    public string InterfaceEstimateId { get; set; }
+
+    [JsonProperty("id")]
+    public string Id { get; set; }
 
     // One-to-many relationships with estimate types
     

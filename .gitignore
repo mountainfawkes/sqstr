@@ -231,8 +231,9 @@ _Pvt_Extensions
 # FAKE - F# Make
 .fake/
 
-# Environment
-.env
+# Environment variables
+/.env
+*/EnvironmentVariables.cs
 
 # VS Code
 .vscode

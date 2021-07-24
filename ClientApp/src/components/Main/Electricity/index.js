@@ -11,14 +11,12 @@ const electricityEstimateForm = () => {
       country: event.target.country.value,
       state: event.target.state.value,
     }
-    console.log(process.env.REACT_APP_CARBON_INTERFACE_BEARER_TOKEN)
-    fetch(`https://www.carboninterface.com/api/v1/estimates`, {
+    console.log(data)
+    fetch(`http://localhost:5000/api/Electricities`, {
       method: `POST`,
       body: JSON.stringify(data),
       headers: {
         'Content-Type': `application/json`,
-        'Authorization':
-        `Bearer ${process.env.REACT_APP_CARBON_INTERFACE_BEARER_TOKEN}`,
       },
     })
       .then(response => response.json())
