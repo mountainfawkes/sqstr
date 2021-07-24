@@ -52,9 +52,6 @@ namespace sqstr.Models
     [JsonProperty("fuel_source_value")]
     public int Fuel_Source_Value { get; set; }
     
-    [JsonProperty("legs")]
-    public List<Leg> Legs { get; set; }
-    
     [JsonProperty("passengers")]
     public int Passengers { get; set; }
     
@@ -78,5 +75,13 @@ namespace sqstr.Models
     
     [JsonProperty("weight_unit")]
     public string Weight_Unit { get; set; }
+
+    // Legs parent relationship
+    
+    [JsonProperty("legs")]
+    public List<Leg> Legs { get; set; }
+    
+    // Data child relationship
+    public int DataId { get; set; }
   }
 }

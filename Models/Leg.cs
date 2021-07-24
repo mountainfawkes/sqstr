@@ -1,10 +1,12 @@
 using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 
 namespace sqstr.Models
 {
   public class Leg
   {
-    public int Id { get; set; }
+    [Key]
+    public int LegsId { get; set; }
     
     [JsonProperty("departure_airport")]
     public string Departure_Airport { get; set; }
@@ -14,6 +16,5 @@ namespace sqstr.Models
 
     // Attributes relationship
     public int AttributesId { get; set; }
-    public Attributes Attributes { get; set; }
   }
 }
