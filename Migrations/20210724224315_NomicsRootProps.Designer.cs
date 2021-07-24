@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using sqstr.Models;
 
 namespace sqstr.Solution.Migrations
 {
     [DbContext(typeof(SqstrContext))]
-    partial class SqstrContextModelSnapshot : ModelSnapshot
+    [Migration("20210724224315_NomicsRootProps")]
+    partial class NomicsRootProps
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,9 +39,6 @@ namespace sqstr.Solution.Migrations
 
                     b.Property<string>("Country")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int>("DataId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Distance_Unit")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -91,9 +90,6 @@ namespace sqstr.Solution.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DataId")
-                        .IsUnique();
-
                     b.ToTable("Attributes");
                 });
 
@@ -103,26 +99,25 @@ namespace sqstr.Solution.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<int?>("AttributesId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Id")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<int>("RootId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Type")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("DataId");
 
-                    b.HasIndex("RootId")
-                        .IsUnique();
+                    b.HasIndex("AttributesId");
 
                     b.ToTable("Data");
                 });
 
             modelBuilder.Entity("sqstr.Models.Leg", b =>
                 {
-                    b.Property<int>("LegsId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
@@ -135,7 +130,7 @@ namespace sqstr.Solution.Migrations
                     b.Property<string>("Destination_Airport")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.HasKey("LegsId");
+                    b.HasKey("Id");
 
                     b.HasIndex("AttributesId");
 
@@ -164,12 +159,15 @@ namespace sqstr.Solution.Migrations
 
             modelBuilder.Entity("sqstr.Models.Root", b =>
                 {
-                    b.Property<int>("RootId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
                     b.Property<string>("Currency")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.Property<int?>("DataId")
+                        .HasColumnType("int");
 
                     b.Property<string>("High")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -192,51 +190,45 @@ namespace sqstr.Solution.Migrations
                     b.Property<string>("Symbol")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.HasKey("RootId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("DataId");
 
                     b.ToTable("Roots");
                 });
 
-            modelBuilder.Entity("sqstr.Models.Attributes", b =>
-                {
-                    b.HasOne("sqstr.Models.Data", null)
-                        .WithOne("Attributes")
-                        .HasForeignKey("sqstr.Models.Attributes", "DataId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("sqstr.Models.Data", b =>
                 {
-                    b.HasOne("sqstr.Models.Root", null)
-                        .WithOne("Data")
-                        .HasForeignKey("sqstr.Models.Data", "RootId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("sqstr.Models.Attributes", "Attributes")
+                        .WithMany()
+                        .HasForeignKey("AttributesId");
+
+                    b.Navigation("Attributes");
                 });
 
             modelBuilder.Entity("sqstr.Models.Leg", b =>
                 {
-                    b.HasOne("sqstr.Models.Attributes", null)
+                    b.HasOne("sqstr.Models.Attributes", "Attributes")
                         .WithMany("Legs")
                         .HasForeignKey("AttributesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
 
-            modelBuilder.Entity("sqstr.Models.Attributes", b =>
-                {
-                    b.Navigation("Legs");
-                });
-
-            modelBuilder.Entity("sqstr.Models.Data", b =>
-                {
                     b.Navigation("Attributes");
                 });
 
             modelBuilder.Entity("sqstr.Models.Root", b =>
                 {
+                    b.HasOne("sqstr.Models.Data", "Data")
+                        .WithMany()
+                        .HasForeignKey("DataId");
+
                     b.Navigation("Data");
+                });
+
+            modelBuilder.Entity("sqstr.Models.Attributes", b =>
+                {
+                    b.Navigation("Legs");
                 });
 #pragma warning restore 612, 618
         }
