@@ -51,11 +51,9 @@ namespace sqstr.Controllers
       JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
       Console.WriteLine(jsonResponse);
 
-      Estimate estimate = JsonConvert.DeserializeObject<Estimate>(result.ToString());
-      Console.WriteLine(estimate);
+      Estimate estimate = JsonConvert.DeserializeObject<Estimate>(result["data"]);
 
       Electricity electricity = JsonConvert.DeserializeObject<Electricity>(result);
-      Console.WriteLine(electricity);
 
       // string body = JsonConvert.SerializeObject(data);
       // var apiCallTask = CarbonInterfaceHelper.CarbonInterfaceCall();
