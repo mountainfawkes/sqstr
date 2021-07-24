@@ -1,14 +1,24 @@
 const shippingEstimateForm = () => {
   function handleShippingInput(event) {
     event.preventDefault()
-    return console.log({
+    const data = {
       type: event.target.type.value,
       weight_unit: event.target.weight_unit.value,
       weight_value: event.target.weight_value.value,
       distance_unit: event.target.distance_unit.value,
       distance_value: event.target.distance_value.value,
       transport_method: event.target.transport_method.value,
+    }
+    console.log(data)
+    fetch(`http://localhost:5000/api/Attributes`, {
+      method: `POST`,
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': `application/json`,
+      },
     })
+      .then(response => response.json())
+      .then(json => console.log(json.data))
   }
 
   return (

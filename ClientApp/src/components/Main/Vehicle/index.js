@@ -3,12 +3,22 @@ import yugos from '../../../Data/Yugos'
 const vehicleEstimateForm = () => {
   function handleVehicleInput(event) {
     event.preventDefault()
-    console.log({
+    const data = {
       type: event.target.type.value,
       distance_unit: event.target.distance_unit.value,
       distance_value: event.target.distance_value.value,
       vehicle_model_id: event.target.vehicle_model_id,
+    }
+    console.log(data)
+    fetch(`http://localhost:5000/api/Attributes`, {
+      method: `POST`,
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': `application/json`,
+      },
     })
+      .then(response => response.json())
+      .then(json => console.log(json.data))
   }
 
   return (
@@ -23,7 +33,7 @@ const vehicleEstimateForm = () => {
           </select>
         </label>
         <label htmlFor='distance_value'>Distance traveled:
-          <input type='number' step='0.1' min='0' name='distance_value' />
+          <input type='number' step='0.1' min='0.1' name='distance_value' />
         </label>
         <label htmlFor='vehicle_model_id'>Vehicle make and model:
           <select name='vehicle_model_id'>

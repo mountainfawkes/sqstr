@@ -3,13 +3,24 @@ import fuels from "../../../Data/Fuels"
 const fuelEstimateForm = () => {
   function handleFuelInput(event) {
     event.preventDefault()
-    console.log({
+    const data = {
       type: event.target.type.value,
       fuel_source_type: event.target.fuel_source_type.value,
       fuel_source_unit: event.target.fuel_source_unit.value,
       fuel_source_value: event.target.fuel_source_value.value,
+    }
+    console.log(data)
+    fetch(`http://localhost:5000/api/Attributes`, {
+      method: `POST`,
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': `application/json`,
+      },
     })
+      .then(response => response.json())
+      .then(json => console.log(json.data))
   }
+
   return (
     <div>
       <h3>This is the fuel combustion form</h3>
@@ -23,7 +34,7 @@ const fuelEstimateForm = () => {
         </label>
         <input type='hidden' name='fuel_source_unit' value='btu' />
         <label htmlFor='fuel_source_value'>Amount used in BTU:
-          <input type='number' step='0.1' min='0' name='fuel_source_value' />
+          <input type='number' step='1' min='0' name='fuel_source_value' />
         </label>
         <button type='submit'>Estimate</button>
       </form>

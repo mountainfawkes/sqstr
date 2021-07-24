@@ -12,14 +12,24 @@ import airports from '../../../Data/Airports'
 const flightEstimateForm = () => {
   function handleFlightInput(event) {
     event.preventDefault()
-    return console.log({
+    const data = {
       type: event.target.flight.value,
       passengers: event.target.passengers.value,
       legs: [
         { departure_airport: event.target.departure_airport.value,
           destination_airport: event.target.destination_airport.value },
       ],
+    }
+    console.log(data)
+    fetch(`http://localhost:5000/api/Attributes`, {
+      method: `POST`,
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': `application/json`,
+      },
     })
+      .then(response => response.json())
+      .then(json => console.log(json.data))
   }
 
   return (
@@ -28,7 +38,7 @@ const flightEstimateForm = () => {
       <form onSubmit={handleFlightInput}>
         <input type='hidden' name='flight' value='flight' />
         <label htmlFor='passengers'>Number of passengers:
-          <input name='passengers' type='number' />
+          <input name='passengers' type='number' min='1' />
         </label>
         <label htmlFor='departure_airport'>Departure airport:
           <select
