@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using sqstr.Models;
 
 namespace sqstr.Solution.Migrations
 {
     [DbContext(typeof(SqstrContext))]
-    partial class SqstrContextModelSnapshot : ModelSnapshot
+    [Migration("20210724044651_ReframeDataStructureToResponse")]
+    partial class ReframeDataStructureToResponse
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -119,7 +121,7 @@ namespace sqstr.Solution.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("AttributesId")
+                    b.Property<int?>("AttributesId")
                         .HasColumnType("int");
 
                     b.Property<string>("Departure_Airport")
@@ -182,13 +184,9 @@ namespace sqstr.Solution.Migrations
 
             modelBuilder.Entity("sqstr.Models.Leg", b =>
                 {
-                    b.HasOne("sqstr.Models.Attributes", "Attributes")
+                    b.HasOne("sqstr.Models.Attributes", null)
                         .WithMany("Legs")
-                        .HasForeignKey("AttributesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Attributes");
+                        .HasForeignKey("AttributesId");
                 });
 
             modelBuilder.Entity("sqstr.Models.Root", b =>

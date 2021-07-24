@@ -1,6 +1,7 @@
 using RestSharp;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Text;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -14,9 +15,9 @@ namespace sqstr.Helpers
     // const string carbonCallResource = "api/v1/estimates";
     static readonly string auth = "Bearer " + EnvironmentVariables.CarbonInterfaceBearerToken;
 
-    public static async Task<Electricity> CarbonInterfaceCall()
+    public static async Task<Attributes> CarbonInterfaceCall()
     {
-      var electricityRequest = new ElectricityRequest { 
+      var electricityRequest = new AttributesRequest { 
         Type = "electricity",
         Electricity_Unit = "mwh",
         Electricity_Value = 42,
@@ -24,41 +25,70 @@ namespace sqstr.Helpers
         State = "or"
       };
 
-      Console.WriteLine(electricityRequest);
-      
       var url = "https://www.carboninterface.com/api/v1/estimates";
       var json = JsonConvert.SerializeObject(electricityRequest);
       var content = new StringContent(json.ToString(), Encoding.UTF8, "application/json");
       HttpClient httpClient = new HttpClient();
+      httpClient.DefaultRequestHeaders.Add("Authorization", auth);
       HttpRequestMessage message = new HttpRequestMessage(HttpMethod.Post, url);
-      message.Headers.Add("Authorization", auth);
       var response = await httpClient.PostAsync(url, content);
-      
-      var result = response.Content.ReadAsStringAsync().Result;
-      Electricity electricity = JsonConvert.DeserializeObject<Electricity>(result);
-      
-      
 
-      return electricity;
+      var result = response.Content.ReadAsStringAsync().Result;
+      Attributes attributes = JsonConvert.DeserializeObject<Attributes>(result);
+
+      return attributes;
     }
   }
 
-  public class ElectricityRequest
-  {
-    [JsonProperty("type")]
-    public string Type { get; set; }
-
+  public class AttributesRequest
+  {    
+    [JsonProperty("country")]
+    public string Country { get; set; }
+    
+    [JsonProperty("distance_unit")]
+    public string Distance_Unit { get; set; }
+    
+    [JsonProperty("distance_value")]
+    public double Distance_Value { get; set; }
+    
     [JsonProperty("electricity_unit")]
     public string Electricity_Unit { get; set; }
     
     [JsonProperty("electricity_value")]
-    public float Electricity_Value { get; set; }
-
-    [JsonProperty("country")]
-    public string Country { get; set; }
-
+    public double Electricity_Value { get; set; }
+    
+    [JsonProperty("fuel_source_type")]
+    public string Fuel_Source_Type { get; set; }
+    
+    [JsonProperty("fuel_source_unit")]
+    public string Fuel_Source_Unit { get; set; }
+    
+    [JsonProperty("fuel_source_value")]
+    public int Fuel_Source_Value { get; set; }
+    
+    [JsonProperty("legs")]
+    public List<Leg> Legs { get; set; }
+    
+    [JsonProperty("passengers")]
+    public int Passengers { get; set; }
+    
     [JsonProperty("state")]
     public string State { get; set; }
+    
+    [JsonProperty("transport_method")]
+    public string Transport_Method { get; set; }
+
+    [JsonProperty("type")]
+    public string Type { get; set; }
+    
+    [JsonProperty("vehicle_model_id")]
+    public string Vehicle_Model_Id { get; set; }
+    
+    [JsonProperty("weight_value")]
+    public string Weight_Value { get; set; }
+    
+    [JsonProperty("weight_unit")]
+    public string Weight_Unit { get; set; }
   }
 
   public class ElectricityResponse

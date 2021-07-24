@@ -6,6 +6,13 @@ namespace sqstr.Models
 {
   public class Attributes
   {
+    public Attributes()
+    {
+      Legs = new List<Leg>();
+    }
+    
+    public int Id { get; set; }
+    
     [JsonProperty("carbon_g")]
     public int Carbon_G { get; set; }
     

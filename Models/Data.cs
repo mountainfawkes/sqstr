@@ -1,9 +1,12 @@
 using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 
 namespace sqstr.Models
 {
   public class Data
   {
+    [Key]
+    public int DataId { get; set; }
     
     [JsonProperty("id")]
     public string Id { get; set; }

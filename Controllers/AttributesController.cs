@@ -15,26 +15,26 @@ namespace sqstr.Controllers
 {
   [Route("api/[Controller]")]
   [ApiController]
-  public class ElectricitiesController : ControllerBase
+  public class AttributesController : ControllerBase
   {
     private readonly SqstrContext _db;
 
-    public ElectricitiesController(SqstrContext db)
+    public AttributesController(SqstrContext db)
     {
       _db = db;
     }
 
-    // GET api/electricities
+    // GET api/attributes
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Electricity>>> Get()
+    public async Task<ActionResult<IEnumerable<Attributes>>> Get()
     {
-      return await _db.Electricities.ToListAsync();
+      return await _db.Attributes.ToListAsync();
     }
 
-    // POST api/electricities
+    // POST api/Attributes
     [HttpPost]
     [EnableCors("defaultPolicy")]
-    public async Task<ActionResult<Electricity>> Post(ElectricityRequest request)
+    public async Task<ActionResult<Attributes>> Post(AttributesRequest request)
     {
       string auth = "Bearer " + EnvironmentVariables.CarbonInterfaceBearerToken;
 
@@ -51,9 +51,8 @@ namespace sqstr.Controllers
       JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
       Console.WriteLine(jsonResponse);
 
-      Estimate estimate = JsonConvert.DeserializeObject<Estimate>(result["data"]);
-
-      Electricity electricity = JsonConvert.DeserializeObject<Electricity>(result);
+      Attributes attributes = JsonConvert.DeserializeObject<Attributes>(jsonResponse["data"]["attributes"].ToString());
+      Console.WriteLine(attributes);
 
       // string body = JsonConvert.SerializeObject(data);
       // var apiCallTask = CarbonInterfaceHelper.CarbonInterfaceCall();
@@ -62,15 +61,11 @@ namespace sqstr.Controllers
       // JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
       // Electricity estimate = JsonConvert.DeserializeObject<Electricity>(jsonResponse["data"].ToString());
       
-      _db.Estimates.Add(estimate);
+      _db.Attributes.Add(attributes);
 
       await _db.SaveChangesAsync();
 
-      _db.Electricities.Add(electricity);
-
-      await _db.SaveChangesAsync();
-
-      return CreatedAtAction("Post", new { id = electricity.ElectricityId }, electricity);
+      return CreatedAtAction("Post", new { id = attributes.Id }, attributes);
     }
 
     // POST overload for Electricity instance

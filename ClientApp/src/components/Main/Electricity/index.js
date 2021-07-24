@@ -12,7 +12,7 @@ const electricityEstimateForm = () => {
       state: event.target.state.value,
     }
     console.log(data)
-    fetch(`http://localhost:5000/api/Electricities`, {
+    fetch(`http://localhost:5000/api/Attributes`, {
       method: `POST`,
       body: JSON.stringify(data),
       headers: {
