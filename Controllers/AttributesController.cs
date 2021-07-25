@@ -50,8 +50,6 @@ namespace sqstr.Controllers
       Console.WriteLine(root);
 
       Root rootData = JsonConvert.DeserializeObject<Root>(root.ToString());
-      // Data dataData = JsonConvert.DeserializeObject<Data>(root["data"].ToString());
-      // Attributes attributesData = JsonConvert.DeserializeObject<Attributes>(estimateJson["data"]["attributes"].ToString());
       
       _db.Roots.Add(rootData);
 
