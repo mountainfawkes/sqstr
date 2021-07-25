@@ -1,8 +1,10 @@
 import subregions from '../../../Data/Subregions'
 import countries from '../../../Data/Countries'
 
-const electricityEstimateForm = () => {
-  function handleElectricityInput(event) {
+const electricityEstimateForm = ({ formCallback,
+  estimateCallback,
+  estimateVisibilityCallback }) => {
+  async function handleElectricityInput(event) {
     event.preventDefault()
     const data = {
       type: event.target.type.value,
@@ -12,7 +14,7 @@ const electricityEstimateForm = () => {
       state: event.target.state.value,
     }
     console.log(data)
-    fetch(`http://localhost:5000/api/Attributes`, {
+    await fetch(`http://localhost:5000/api/Attributes`, {
       method: `POST`,
       body: JSON.stringify(data),
       headers: {
@@ -20,7 +22,11 @@ const electricityEstimateForm = () => {
       },
     })
       .then(response => response.json())
-      .then(json => console.log(json.data))
+      .then(data => estimateCallback(data))
+      .then(data => console.log(data))
+
+    formCallback(null)
+    estimateVisibilityCallback(true)
   }
 
   return (

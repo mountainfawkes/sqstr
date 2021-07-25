@@ -13,17 +13,33 @@ import Footer from '../Footer'
 
 export default () => {
   const [formSelection, selectForm] = useState(null)
+  const [estimate, setEstimate] = useState(null)
+  const [estimateVisible, toggleEstimateVisibility] = useState(false)
 
   const formCallback = useCallback(formSelection => {
     selectForm(formSelection)
   }, [])
 
+  const estimateCallback = useCallback(estimate => {
+    setEstimate(estimate)
+  }, [])
+
+  const estimateVisibilityCallback = useCallback(estimateVisible => {
+    toggleEstimateVisibility(estimateVisible)
+  }, [])
+
   console.log(formSelection)
+  console.log(estimate)
+  console.log(estimateVisible)
 
   let visibleState = null
 
   if (formSelection === 0) {
-    visibleState = <Electricity />
+    visibleState = <Electricity
+      formCallback={formCallback}
+      estimateCallback={estimateCallback}
+      estimateVisibilityCallback={estimateVisibilityCallback}
+    />
   } else if (formSelection === 1) {
     visibleState = <Flight />
   } else if (formSelection === 2) {
@@ -32,6 +48,11 @@ export default () => {
     visibleState = <Vehicle />
   } else if (formSelection === 4) {
     visibleState = <FuelCombustion />
+  } else if (
+    formSelection === null &&
+    estimate != null &&
+    estimateVisible === true) {
+    visibleState = <Estimate />
   }
 
   return (
@@ -44,7 +65,6 @@ export default () => {
         {visibleState}
       </div>
 
-      <Estimate />
       <Footer />
     </>
   )
