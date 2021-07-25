@@ -34,19 +34,30 @@ namespace sqstr.Controllers
     [EnableCors("defaultPolicy")]
     public async Task<ActionResult<Attributes>> Post(AttributesRequest request)
     {
-      var response = await CarbonInterfaceHelper.CarbonInterfaceCall(request);
+      var priceResponse = await NomicsHelper.NomicsCall();
+      var estimateResponse = await CarbonInterfaceHelper.CarbonInterfaceCall(request);
 
-      string result = response.Content.ReadAsStringAsync().Result;
+      string priceResult = priceResponse.Content.ReadAsStringAsync().Result;
+      Console.WriteLine(priceResult);
+      string estimateResult = estimateResponse.Content.ReadAsStringAsync().Result;
 
-      JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
+      JArray priceJson = JsonConvert.DeserializeObject<JArray>(priceResult);
+      JObject root = JsonConvert.DeserializeObject<JObject>(priceJson[0].ToString());
 
-      Attributes attributes = JsonConvert.DeserializeObject<Attributes>(jsonResponse["data"]["attributes"].ToString());
+      JObject estimateJson = JsonConvert.DeserializeObject<JObject>(estimateResult);
+
+      root.Merge(estimateJson);
+      Console.WriteLine(root);
+
+      Root rootData = JsonConvert.DeserializeObject<Root>(root.ToString());
+      // Data dataData = JsonConvert.DeserializeObject<Data>(root["data"].ToString());
+      // Attributes attributesData = JsonConvert.DeserializeObject<Attributes>(estimateJson["data"]["attributes"].ToString());
       
-      _db.Attributes.Add(attributes);
+      _db.Roots.Add(rootData);
 
       await _db.SaveChangesAsync();
 
-      return CreatedAtAction("Post", new { id = attributes.Id }, attributes);
+      return CreatedAtAction("Post", new { id = rootData.RootId }, rootData);
     }
   }
 }
