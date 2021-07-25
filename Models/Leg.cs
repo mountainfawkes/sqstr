@@ -13,8 +13,5 @@ namespace sqstr.Models
     
     [JsonProperty("destination_airport")]
     public string Destination_Airport { get; set; }
-
-    // Attributes relationship
-    public int AttributesId { get; set; }
   }
 }

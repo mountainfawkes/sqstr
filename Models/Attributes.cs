@@ -80,8 +80,5 @@ namespace sqstr.Models
     
     [JsonProperty("legs")]
     public List<Leg> Legs { get; set; }
-    
-    // Data child relationship
-    public int DataId { get; set; }
   }
 }

@@ -21,9 +21,5 @@ namespace sqstr.Models
     
     [JsonProperty("attributes")]
     public Attributes Attributes { get; set; }
-
-    // Root child relationship
-
-    public int RootId { get; set; }
   }
 }
