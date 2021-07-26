@@ -1,3 +1,6 @@
+import { BrowserRouter as Router,
+  Switch,
+  Route } from 'react-router-dom'
 import Header from './Header'
 import About from './Main/About'
 import Splash from './Splash'
@@ -11,18 +14,30 @@ function App() {
   const background = getBackground()
 
   return (
-    <div style={{ backgroundImage: `url(${background})`,
-      backgroundSize: `cover`,
-      backgroundRepeat: `no-repeat`,
-      width: `100%` }}
-    >
+    <Router>
+      <div style={{ backgroundImage: `url(${background})`,
+        backgroundSize: `cover`,
+        backgroundRepeat: `no-repeat`,
+        width: `100%` }}
+      >
 
-      <Header />
-      <Splash />
-      <About />
-      <Main />
-      <Footer />
-    </div>
+        <Header />
+
+        <Switch>
+          <Route exact path='/'>
+            <Splash />
+          </Route>
+          <Route path='/about'>
+            <About />
+          </Route>
+          <Route path='/estimate'>
+            <Main />
+          </Route>
+        </Switch>
+
+        <Footer />
+      </div>
+    </Router>
   )
 }
 
