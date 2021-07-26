@@ -3,16 +3,16 @@ import Links from './Links'
 
 export default ({ estimate }) => {
   const co2Emissions = estimate.data.attributes.carbon_Mt
-  const upco2Price = estimate.price
-  const fullOffset = co2Emissions * upco2Price
-  const threeOffset = (co2Emissions * upco2Price) * 0.75
-  const halfOffset = (co2Emissions * upco2Price) * 0.5
-  const quarterOffset = (co2Emissions * upco2Price) * 0.25
+  const upco2Price = (estimate.price).toLocaleString(`us-EN`, { style: `currency`, currency: `USD` })
+  const fullOffset = (co2Emissions * upco2Price).toLocaleString(`us-EN`, { style: `currency`, currency: `USD` })
+  const threeOffset = ((co2Emissions * upco2Price) * 0.75).toLocaleString(`us-EN`, { style: `currency`, currency: `USD` })
+  const halfOffset = ((co2Emissions * upco2Price) * 0.5).toLocaleString(`us-EN`, { style: `currency`, currency: `USD` })
+  const quarterOffset = ((co2Emissions * upco2Price) * 0.25).toLocaleString(`us-EN`, { style: `currency`, currency: `USD` })
 
   return (
     <div>
-      <h2>Your activity will emit {estimate.data.attributes.carbon_Mt} metric tonnes of carbon.</h2>
-      <p>The current price of <a href='https://universalcarbon.com/'>UPCO2</a> is {estimate.price}.</p>
+      <h2>Your activity will emit {co2Emissions} metric tonnes of carbon.</h2>
+      <p>The current price of <a href='https://universalcarbon.com/'>UPCO2</a> is {parseFloat(upco2Price).toLocaleString(`us-EN`, { style: `currency`, currency: `USD` })}.</p>
       <p>At that price, expect the following levels of carbon investment to offset your activity:</p>
       <table>
         <tr>
