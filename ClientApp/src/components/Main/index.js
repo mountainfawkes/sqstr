@@ -52,7 +52,12 @@ export default () => {
     formSelection === null &&
     estimate != null &&
     estimateVisible === true) {
-    visibleState = <Estimate />
+    visibleState = <Estimate
+      estimate={estimate}
+      formCallback={formCallback}
+      estimateCallback={estimateCallback}
+      estimateVisibilityCallback={estimateVisibilityCallback}
+    />
   }
 
   return (
