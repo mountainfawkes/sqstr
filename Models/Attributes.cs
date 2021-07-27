@@ -50,7 +50,7 @@ namespace sqstr.Models
     public string Fuel_Source_Unit { get; set; }
     
     [JsonProperty("fuel_source_value")]
-    public int Fuel_Source_Value { get; set; }
+    public double Fuel_Source_Value { get; set; }
     
     [JsonProperty("passengers")]
     public int Passengers { get; set; }
