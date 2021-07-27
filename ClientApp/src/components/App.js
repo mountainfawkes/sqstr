@@ -6,28 +6,20 @@ import Header from './Header'
 import About from './Main/About'
 import Splash from './Splash'
 import Main from './Main'
-import Footer from './Footer'
-import { getBackground } from '../img/backgrounds'
+// import Footer from './Footer'
+// import { getBackground } from '../img/backgrounds'
 // import logo from './logo.svg'
 // import './App.css'
 
 function App() {
-  const background = getBackground()
+  // const background = getBackground()
 
   return (
     <Router>
-      <div style={{ display: `flex`,
-        flexDirection: `column`,
-        backgroundImage: `url(${background})`,
-        backgroundSize: `cover`,
-        backgroundRepeat: `no-repeat`,
-        minWidth: `110vw`,
-        minHeight: `110vh`,
-        position: `absolute`,
-        top: `0`,
-        left: `0` }}
-      >
-        <Header style={{ }} />
+      <div>
+        <div>
+          <Header />
+        </div>
 
         <Switch>
           <Route exact path='/'>
@@ -49,7 +41,18 @@ function App() {
           </Route>
         </Switch>
 
-        <Footer />
+        {/* <div style={{ display: `block`,
+          width: `100%`,
+          zIndex: `100`,
+          position: `fixed`,
+          bottom: `0`,
+          left: `0`,
+          background: `#000000`,
+          padding: `20px`,
+          color: `#000000` }}
+        >
+          <Footer />
+        </div> */}
       </div>
     </Router>
   )

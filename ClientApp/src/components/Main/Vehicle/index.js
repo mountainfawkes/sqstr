@@ -1,16 +1,18 @@
 import yugos from '../../../Data/Yugos'
 
-const vehicleEstimateForm = () => {
-  function handleVehicleInput(event) {
+const vehicleEstimateForm = ({ formCallback,
+  estimateCallback,
+  estimateVisibilityCallback }) => {
+  async function handleVehicleInput(event) {
     event.preventDefault()
     const data = {
       type: event.target.type.value,
       distance_unit: event.target.distance_unit.value,
       distance_value: event.target.distance_value.value,
-      vehicle_model_id: event.target.vehicle_model_id,
+      vehicle_model_id: event.target.vehicle_model_id.value,
     }
     console.log(data)
-    fetch(`http://localhost:5000/api/Attributes`, {
+    await fetch(`http://localhost:5000/api/Attributes`, {
       method: `POST`,
       body: JSON.stringify(data),
       headers: {
@@ -18,7 +20,11 @@ const vehicleEstimateForm = () => {
       },
     })
       .then(response => response.json())
-      .then(json => console.log(json.data))
+      .then(data => estimateCallback(data))
+      .then(data => console.log(data))
+
+    formCallback(null)
+    estimateVisibilityCallback(true)
   }
 
   return (

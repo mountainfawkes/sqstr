@@ -1,13 +1,15 @@
 import fuels from "../../../Data/Fuels"
 
-const fuelEstimateForm = () => {
+const fuelEstimateForm = ({ formCallback,
+  estimateCallback,
+  estimateVisibilityCallback }) => {
   function handleFuelInput(event) {
     event.preventDefault()
     const data = {
       type: event.target.type.value,
       fuel_source_type: event.target.fuel_source_type.value,
       fuel_source_unit: event.target.fuel_source_unit.value,
-      fuel_source_value: event.target.fuel_source_value.value,
+      fuel_source_value: parseInt(event.target.fuel_source_value.value, 10),
     }
     console.log(data)
     fetch(`http://localhost:5000/api/Attributes`, {
@@ -18,7 +20,11 @@ const fuelEstimateForm = () => {
       },
     })
       .then(response => response.json())
-      .then(json => console.log(json.data))
+      .then(data => estimateCallback(data))
+      .then(data => console.log(data))
+
+    formCallback(null)
+    estimateVisibilityCallback(true)
   }
 
   return (

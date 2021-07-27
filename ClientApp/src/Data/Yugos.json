@@ -1,13 +1,5 @@
 [
   {
-    "id": "fe2faff6-4347-4535-9de7-a141e67b5b37",
-    "type": "vehicle_make",
-    "attributes": {
-        "name": "Yugo",
-        "number_of_models": 8
-    }
-  },
-  {
     "id": "865997a6-eb24-404f-b300-34f0706b963d",
     "type": "vehicle_model",
     "attributes": {

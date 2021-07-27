@@ -2,16 +2,43 @@ import Links from './Links'
 /* eslint-disable max-len */
 
 export default ({ estimate }) => {
-  const co2Emissions = estimate.data.attributes.carbon_Mt
+  const co2G = estimate.data.attributes.carbon_G
+  const co2Lb = estimate.data.attributes.carbon_Lb
+  const co2Kg = estimate.data.attributes.carbon_Kg
+  const co2Tons = co2G / 1000000
   const upco2Price = (estimate.price).toLocaleString(`us-EN`, { style: `currency`, currency: `USD` })
-  const fullOffset = (co2Emissions * upco2Price).toLocaleString(`us-EN`, { style: `currency`, currency: `USD` })
-  const threeOffset = ((co2Emissions * upco2Price) * 0.75).toLocaleString(`us-EN`, { style: `currency`, currency: `USD` })
-  const halfOffset = ((co2Emissions * upco2Price) * 0.5).toLocaleString(`us-EN`, { style: `currency`, currency: `USD` })
-  const quarterOffset = ((co2Emissions * upco2Price) * 0.25).toLocaleString(`us-EN`, { style: `currency`, currency: `USD` })
+  const fullOffset = (co2Tons * upco2Price).toLocaleString(`us-EN`, { style: `currency`, currency: `USD` })
+  const threeOffset = ((co2Tons * upco2Price) * 0.75).toLocaleString(`us-EN`, { style: `currency`, currency: `USD` })
+  const halfOffset = ((co2Tons * upco2Price) * 0.5).toLocaleString(`us-EN`, { style: `currency`, currency: `USD` })
+  const quarterOffset = ((co2Tons * upco2Price) * 0.25).toLocaleString(`us-EN`, { style: `currency`, currency: `USD` })
 
   return (
     <div>
-      <h2>Your activity will emit {co2Emissions} metric tonnes of carbon.</h2>
+      <h2>Your activity will emit the following:
+        <table>
+          <tr>
+            <th>Carbon Emissions</th>
+            <th>Unit</th>
+          </tr>
+          <tr>
+            <th>{co2G}</th>
+            <th>Grams</th>
+          </tr>
+          <tr>
+            <th>{co2Lb}</th>
+            <th>Pounds</th>
+          </tr>
+          <tr>
+            <th>{co2Kg}</th>
+            <th>Kilograms</th>
+          </tr>
+          <tr>
+            <th>{co2Tons}</th>
+            <th>Metric Tons</th>
+          </tr>
+        </table>
+
+        {co2Tons} metric tonnes of carbon.</h2>
       <p>The current price of <a href='https://universalcarbon.com/'>UPCO2</a> is {parseFloat(upco2Price).toLocaleString(`us-EN`, { style: `currency`, currency: `USD` })}.</p>
       <p>At that price, expect the following levels of carbon investment to offset your activity:</p>
       <table>

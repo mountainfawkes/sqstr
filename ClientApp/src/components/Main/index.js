@@ -38,13 +38,29 @@ export default () => {
       estimateVisibilityCallback={estimateVisibilityCallback}
     />
   } else if (formSelection === 1) {
-    visibleState = <Flight />
+    visibleState = <Flight
+      formCallback={formCallback}
+      estimateCallback={estimateCallback}
+      estimateVisibilityCallback={estimateVisibilityCallback}
+    />
   } else if (formSelection === 2) {
-    visibleState = <Shipping />
+    visibleState = <Shipping
+      formCallback={formCallback}
+      estimateCallback={estimateCallback}
+      estimateVisibilityCallback={estimateVisibilityCallback}
+    />
   } else if (formSelection === 3) {
-    visibleState = <Vehicle />
+    visibleState = <Vehicle
+      formCallback={formCallback}
+      estimateCallback={estimateCallback}
+      estimateVisibilityCallback={estimateVisibilityCallback}
+    />
   } else if (formSelection === 4) {
-    visibleState = <FuelCombustion />
+    visibleState = <FuelCombustion
+      formCallback={formCallback}
+      estimateCallback={estimateCallback}
+      estimateVisibilityCallback={estimateVisibilityCallback}
+    />
   } else if (
     formSelection === null &&
     estimate != null &&

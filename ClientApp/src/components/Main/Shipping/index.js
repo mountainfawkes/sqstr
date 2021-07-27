@@ -1,5 +1,7 @@
-const shippingEstimateForm = () => {
-  function handleShippingInput(event) {
+const shippingEstimateForm = ({ formCallback,
+  estimateCallback,
+  estimateVisibilityCallback }) => {
+  async function handleShippingInput(event) {
     event.preventDefault()
     const data = {
       type: event.target.type.value,
@@ -10,7 +12,7 @@ const shippingEstimateForm = () => {
       transport_method: event.target.transport_method.value,
     }
     console.log(data)
-    fetch(`http://localhost:5000/api/Attributes`, {
+    await fetch(`http://localhost:5000/api/Attributes`, {
       method: `POST`,
       body: JSON.stringify(data),
       headers: {
@@ -18,7 +20,11 @@ const shippingEstimateForm = () => {
       },
     })
       .then(response => response.json())
-      .then(json => console.log(json.data))
+      .then(data => estimateCallback(data))
+      .then(data => console.log(data))
+
+    formCallback(null)
+    estimateVisibilityCallback(true)
   }
 
   return (
