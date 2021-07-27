@@ -1,11 +1,17 @@
 import { Link } from 'react-router-dom'
 
 export default () => (
-  <div>
-    <h1>sqstr</h1>
-    <Link exact to='/'>Home</Link>
-    <Link to='/about'>About</Link>
-    <Link to='/estimate'>Estimate</Link>
-  </div>
+  <>
+    <span>sqstr</span>
+    <span>
+      <Link exact to='/'>Home</Link>
+    </span>
+    <span>
+      <Link to='/about'>About</Link>
+    </span>
+    <span>
+      <Link to='/estimate'>Estimate</Link>
+    </span>
+  </>
 
 )

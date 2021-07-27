@@ -1,6 +1,7 @@
 import { BrowserRouter as Router,
   Switch,
   Route } from 'react-router-dom'
+// import styled from 'styled-components'
 import Header from './Header'
 import About from './Main/About'
 import Splash from './Splash'
@@ -15,23 +16,36 @@ function App() {
 
   return (
     <Router>
-      <div style={{ backgroundImage: `url(${background})`,
+      <div style={{ display: `flex`,
+        flexDirection: `column`,
+        backgroundImage: `url(${background})`,
         backgroundSize: `cover`,
         backgroundRepeat: `no-repeat`,
-        width: `100%` }}
+        minWidth: `110vw`,
+        minHeight: `110vh`,
+        position: `absolute`,
+        top: `0`,
+        left: `0` }}
       >
-
-        <Header />
+        <Header style={{ }} />
 
         <Switch>
           <Route exact path='/'>
-            <Splash />
+            <Splash style={{
+              justifyContent: `center`,
+              alignItems: `center`,
+            }}
+            />
           </Route>
           <Route path='/about'>
-            <About />
+            <About style={{ justifyContent: `center`,
+              alignItems: `center` }}
+            />
           </Route>
           <Route path='/estimate'>
-            <Main />
+            <Main style={{ justifyContent: `center`,
+              alignItems: `center` }}
+            />
           </Route>
         </Switch>
 
