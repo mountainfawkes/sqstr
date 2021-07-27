@@ -16,6 +16,7 @@ const flightEstimateForm = ({ formCallback,
     event.preventDefault()
     const data = {
       type: event.target.flight.value,
+      distance_unit: event.target.distance_unit.value,
       passengers: parseInt(event.target.passengers.value, 10),
       legs: [
         { departure_airport: event.target.departure_airport.value,
@@ -43,6 +44,7 @@ const flightEstimateForm = ({ formCallback,
       <h3>This is the flight form</h3>
       <form onSubmit={handleFlightInput}>
         <input type='hidden' name='flight' value='flight' />
+        <input type='hidden' name='distance_unit' value='km' />
         <label htmlFor='passengers'>Number of passengers:
           <input name='passengers' type='number' min='1' />
         </label>
