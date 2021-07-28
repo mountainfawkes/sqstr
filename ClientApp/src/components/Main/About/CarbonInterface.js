@@ -1,8 +1,14 @@
 /* eslint-disable max-len */
-export default () => (
-  <div>
-    <p>
-      Carbon Interface makes it easy for developers to perform carbon emissions calculations through an easy-to-use API. In order to provide accurate estimates that developers can trust, each estimate type has a different carbon calculation that factors in best practices from <a href='https://ghgprotocol.org/'>GHG Protocol</a>, the <a href='https://www.ipcc.ch/'>IPCC</a> and country-specific agencies such as the <a href='https://www.epa.gov/'>EPA</a>. Additionally, all emissions data is versioned to ensure accurate estimates in the future and audit purposes. We believe in being transparent with our calculations and data sources so developers can assure their users that they are performing accurate emission estimates.
-    </p>
-  </div>
-)
+export default () => {
+  const linkStyles = { color: `#EDC9AF`,
+    textShadow: `1px 1px 10px #EDC9AF`,
+    textDecoration: `none` }
+
+  return (
+    <div>
+      <p>
+        <a href='https://www.carboninterface.com/' style={linkStyles}>Carbon Interface</a> makes it possible for SQSTR to perform carbon emissions calculations. Each estimate includes carbon calculations that factor in best practices from <a href='https://ghgprotocol.org/' style={linkStyles}>GHG Protocol</a>, the <a href='https://www.ipcc.ch/' style={linkStyles}>IPCC</a> and country-specific agencies such as the <a href='https://www.epa.gov/' style={linkStyles}>EPA</a>.
+      </p>
+    </div>
+  )
+}

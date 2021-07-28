@@ -4,8 +4,15 @@ import UPCO2 from './UPCO2'
 
 export default () => (
   <>
-    <Sqstr />
-    <CO2Int />
-    <UPCO2 />
+    <div style={{
+      backgroundColor: `#131217`,
+      color: `#A19194`,
+      padding: `0 15px`,
+    }}
+    >
+      <Sqstr />
+      <CO2Int />
+      <UPCO2 />
+    </div>
   </>
 )
