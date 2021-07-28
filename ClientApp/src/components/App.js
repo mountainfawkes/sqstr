@@ -14,33 +14,36 @@ import { getBackground } from '../img/backgrounds'
 function App() {
   const background = getBackground()
 
-  const headerStyles = { display: `block`,
+  const headerStyles = { display: `flex`,
+    flexDirection: `column`,
     width: `100%`,
     zIndex: `100`,
     position: `fixed`,
     top: `0`,
     left: `0`,
-    background: `#000000`,
     padding: `20px`,
     color: `#000000` }
 
-  const footerStyles = { display: `block`,
+  const footerStyles = { display: `flex`,
     width: `100%`,
     zIndex: `100`,
     position: `fixed`,
     bottom: `0`,
     left: `0`,
-    background: `#000000`,
+    margin: `0 0 0 20px`,
     padding: `20px`,
-    color: `#000000` }
+    color: `#EDC9AF`,
+    textShadow: `1px 1px 10px #EDC9AF`,
+    fontSize: `.75em` }
 
   return (
     <Router>
       <div style={{ display: `flex`,
         flexDirection: `column`,
         backgroundImage: `url(${background})`,
-        backgroundSize: `cover`,
+        backgroundSize: `100%`,
         backgroundRepeat: `no-repeat`,
+        backgroundColor: `#020202`,
         minWidth: `100vw`,
         minHeight: `100vh`,
         position: `absolute`,
@@ -54,16 +57,34 @@ function App() {
 
         <Switch>
           <Route exact path='/'>
-            <Splash style={{
+            <div style={{
+              display: `flex`,
+              flexDirection: `column`,
+              maxWidth: `45vw`,
+              margin: `auto`,
               justifyContent: `center`,
               alignItems: `center`,
             }}
-            />
+            >
+              <Splash />
+            </div>
           </Route>
           <Route path='/about'>
-            <About style={{ justifyContent: `center`,
-              alignItems: `center` }}
-            />
+            <div style={{
+              display: `flex`,
+              flexDirection: `column`,
+              maxWidth: `45vw`,
+              margin: `auto`,
+              padding: `10px`,
+              alignItems: `center`,
+              justifyContent: `center`,
+              backgroundColor: `#0A090C`,
+            }}
+            >
+              <About style={{ justifyContent: `center`,
+                alignItems: `center` }}
+              />
+            </div>
           </Route>
           <Route path='/estimate'>
             <Main style={{ justifyContent: `center`,
