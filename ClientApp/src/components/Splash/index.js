@@ -10,12 +10,12 @@ export default () => (
         padding: `10px`,
         justifyContent: `center`,
         alignItems: `center`,
-        color: `#131217`,
+        color: `#0A090C`,
         borderRadius: `15px`,
         zIndex: `100`,
         textAlign: `center`,
-        textShadow: `1px 1px 10px #F0EDEE`,
-        backdropFilter: `contrast(60%)`,
+        textShadow: `1px 1px 10px #F5F5F5`,
+        backdropFilter: `contrast(70%)`,
       }}
     >
       <Elevator />
