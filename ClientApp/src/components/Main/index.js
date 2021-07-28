@@ -1,3 +1,5 @@
+import '../../App.css'
+
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useCallback, useState } from 'react'
 import Nav from './Nav'
@@ -12,6 +14,15 @@ export default () => {
   const [formSelection, selectForm] = useState(null)
   const [estimate, setEstimate] = useState(null)
   const [estimateVisible, toggleEstimateVisibility] = useState(false)
+
+  const contentStyles = {
+    display: `flex`,
+    flexDirection: `column`,
+    margin: `50px`,
+    width: `60%`,
+    background: `#131217`,
+    opacity: `75%`,
+  }
 
   const formCallback = useCallback(formSelection => {
     selectForm(formSelection)
@@ -36,30 +47,35 @@ export default () => {
       formCallback={formCallback}
       estimateCallback={estimateCallback}
       estimateVisibilityCallback={estimateVisibilityCallback}
+      key='electricity'
     />
   } else if (formSelection === 1) {
     visibleState = <Flight
       formCallback={formCallback}
       estimateCallback={estimateCallback}
       estimateVisibilityCallback={estimateVisibilityCallback}
+      key='flight'
     />
   } else if (formSelection === 2) {
     visibleState = <Shipping
       formCallback={formCallback}
       estimateCallback={estimateCallback}
       estimateVisibilityCallback={estimateVisibilityCallback}
+      key='shipping'
     />
   } else if (formSelection === 3) {
     visibleState = <Vehicle
       formCallback={formCallback}
       estimateCallback={estimateCallback}
       estimateVisibilityCallback={estimateVisibilityCallback}
+      key='vehicle'
     />
   } else if (formSelection === 4) {
     visibleState = <FuelCombustion
       formCallback={formCallback}
       estimateCallback={estimateCallback}
       estimateVisibilityCallback={estimateVisibilityCallback}
+      key='fuel-combustion'
     />
   } else if (
     formSelection === null &&
@@ -70,15 +86,31 @@ export default () => {
       formCallback={formCallback}
       estimateCallback={estimateCallback}
       estimateVisibilityCallback={estimateVisibilityCallback}
+      key='estimate'
     />
   }
 
   return (
     <>
-      <Nav mainCallback={formCallback} />
+      <div style={{
+        display: `flex`,
+        flexFlow: `row wrap`,
+        zIndex: `100`,
+        marginTop: `150px`,
+      }}
+      >
+        <Nav mainCallback={formCallback} />
+      </div>
 
-      <div>
-        {visibleState}
+      <div style={{ display: `flex`,
+        flexDirection: `column`,
+        justifyContent: `center`,
+        alignItems: `center`,
+        alignContent: `center` }}
+      >
+        <div style={contentStyles}>
+          {visibleState}
+        </div>
       </div>
     </>
   )

@@ -6,18 +6,49 @@ import Header from './Header'
 import About from './Main/About'
 import Splash from './Splash'
 import Main from './Main'
-// import Footer from './Footer'
-// import { getBackground } from '../img/backgrounds'
+import Footer from './Footer'
+import { getBackground } from '../img/backgrounds'
 // import logo from './logo.svg'
 // import './App.css'
 
 function App() {
-  // const background = getBackground()
+  const background = getBackground()
+
+  const headerStyles = { display: `block`,
+    width: `100%`,
+    zIndex: `100`,
+    position: `fixed`,
+    top: `0`,
+    left: `0`,
+    background: `#000000`,
+    padding: `20px`,
+    color: `#000000` }
+
+  const footerStyles = { display: `block`,
+    width: `100%`,
+    zIndex: `100`,
+    position: `fixed`,
+    bottom: `0`,
+    left: `0`,
+    background: `#000000`,
+    padding: `20px`,
+    color: `#000000` }
 
   return (
     <Router>
-      <div>
-        <div>
+      <div style={{ display: `flex`,
+        flexDirection: `column`,
+        backgroundImage: `url(${background})`,
+        backgroundSize: `cover`,
+        backgroundRepeat: `no-repeat`,
+        minWidth: `100vw`,
+        minHeight: `100vh`,
+        position: `absolute`,
+        top: `0`,
+        left: `0`,
+        zIndex: `-99` }}
+      >
+        <div style={headerStyles}>
           <Header />
         </div>
 
@@ -41,18 +72,9 @@ function App() {
           </Route>
         </Switch>
 
-        {/* <div style={{ display: `block`,
-          width: `100%`,
-          zIndex: `100`,
-          position: `fixed`,
-          bottom: `0`,
-          left: `0`,
-          background: `#000000`,
-          padding: `20px`,
-          color: `#000000` }}
-        >
+        <div style={footerStyles}>
           <Footer />
-        </div> */}
+        </div>
       </div>
     </Router>
   )
