@@ -14,7 +14,7 @@ namespace sqstr.Models
     public int Id { get; set; }
     
     [JsonProperty("carbon_g")]
-    public int Carbon_G { get; set; }
+    public long Carbon_G { get; set; }
     
     [JsonProperty("carbon_lb")]
     public double Carbon_Lb { get; set; }
