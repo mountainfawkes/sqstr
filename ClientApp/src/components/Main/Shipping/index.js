@@ -102,7 +102,7 @@ const shippingEstimateForm = ({ formCallback,
               <select name='transport_method' style={{ margin: `0 0 0 10px` }}>
                 <option value='ship'>Ship</option>
                 <option value='train'>Train</option>
-                <option value='pruck'>Truck</option>
+                <option value='truck'>Truck</option>
                 <option value='plane'>Plane</option>
               </select>
             </label>
