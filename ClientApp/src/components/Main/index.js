@@ -87,7 +87,6 @@ export default () => {
       <div style={{
         display: `flex`,
         flexFlow: `column wrap`,
-        zIndex: `100`,
         marginTop: `125px`,
       }}
       >
