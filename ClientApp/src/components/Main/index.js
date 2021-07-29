@@ -9,6 +9,7 @@ import Flight from './Flight'
 import Shipping from './Shipping'
 import Vehicle from './Vehicle'
 import FuelCombustion from './FuelCombustion'
+import Instructions from './Instructions'
 
 export default () => {
   const [formSelection, selectForm] = useState(null)
@@ -79,7 +80,7 @@ export default () => {
       estimateVisibilityCallback={estimateVisibilityCallback}
       key='estimate'
     />
-  }
+  } else { visibleState = <Instructions /> }
 
   return (
     <>
