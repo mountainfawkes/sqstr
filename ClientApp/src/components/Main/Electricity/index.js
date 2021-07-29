@@ -55,7 +55,7 @@ const electricityEstimateForm = ({ formCallback,
       }}
       >
         <p>
-          Use the form below to estimate your carbon offset by electricity usage.
+          The amount you emit might be shocking.
         </p>
         <form onSubmit={handleElectricityInput}>
           <input type='hidden' name='type' value='electricity' />

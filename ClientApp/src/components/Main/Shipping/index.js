@@ -53,7 +53,7 @@ const shippingEstimateForm = ({ formCallback,
       }}
       >
         <p>
-          Use this form to estimate your carbon offset for items sent by mail.
+          It's only bad if you buy blueberries from Chile.
         </p>
         <form onSubmit={handleShippingInput}>
           <input type='hidden' name='type' value='shipping' />

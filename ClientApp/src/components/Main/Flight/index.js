@@ -62,7 +62,7 @@ const flightEstimateForm = ({ formCallback,
         fontFamily: `'Montserrat', sans-serif` }}
       >
         <p>
-          Use the form below to estimate your carbon offset by airline travel.
+          What's the deal with airline food?
         </p>
         <form onSubmit={handleFlightInput}>
           <input type='hidden' name='flight' value='flight' />

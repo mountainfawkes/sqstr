@@ -51,7 +51,7 @@ const vehicleEstimateForm = ({ formCallback,
         fontFamily: `'Montserrat', sans-serif`,
       }}
       >
-        <p>Use this form to estimate your carbon offsets by vehicle travel.</p>
+        <p>There are only 8 car models in this world, and they're all Yugos.</p>
         <form onSubmit={handleVehicleInput}>
           <input type='hidden' name='type' value='vehicle' />
           <div style={inputStyles}>

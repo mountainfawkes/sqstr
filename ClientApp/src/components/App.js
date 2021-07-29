@@ -30,7 +30,7 @@ function App() {
     left: `0`,
     margin: `0 0 0 20px`,
     padding: `20px`,
-    color: `#F5F5F5`,
+    color: `#D1C7CA`,
     fontSize: `.75em` }
 
   const contentStyles = {
@@ -47,7 +47,7 @@ function App() {
       <div style={{ display: `flex`,
         flexDirection: `column`,
         backgroundImage: `url(${background})`,
-        backgroundSize: `100%`,
+        backgroundSize: `cover`,
         backgroundRepeat: `no-repeat`,
         backgroundColor: `#020202`,
         minWidth: `100vw`,

@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 export default ({ mainCallback }) => {
   const buttonStyle = { fontWeight: `bold`,
-    fontSize: `1em`,
+    fontSize: `1.25em`,
     margin: `5px`,
     padding: `10px`,
     borderRadius: `15px`,
@@ -14,7 +14,7 @@ export default ({ mainCallback }) => {
       style={{ display: `flex`,
         flexFlow: `flex wrap`,
         borderRadius: `15px`,
-        width: `auto`,
+        width: `650px`,
         height: `auto`,
         margin: `auto`,
         textAlign: `center`,

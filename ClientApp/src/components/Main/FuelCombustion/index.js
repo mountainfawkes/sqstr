@@ -51,7 +51,7 @@ const fuelEstimateForm = ({ formCallback,
         fontFamily: `'Montserrat', sans-serif`,
       }}
       >
-        <p>Use the form below to estimate your carbon offset by fuel burned.</p>
+        <p>Because America runs on bituminous coal and jet fuel.</p>
         <form onSubmit={handleFuelInput}>
           <input type='hidden' name='type' value='fuel_combustion' />
           <div style={inputStyles}>
