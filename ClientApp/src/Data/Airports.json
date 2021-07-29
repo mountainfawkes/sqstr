@@ -1,5 +1,17 @@
 [
   {
+    "value":"BOI",
+    "label":"Boise Air Terminal/Gowen field",
+    "lat":"43.569263",
+    "lon":"-116.22193"
+  },
+  {
+    "value":"PDX",
+    "label":"Portland International Airport",
+    "lat":"45.588997",
+    "lon":"-122.5929"
+  },
+  {
     "value":"UTK",
     "label":"Utirik Airport",
     "lat":"11.233333",
@@ -13318,12 +13330,6 @@
     "lon":"-86.668945"
   },
   {
-    "value":"BOI",
-    "label":"Boise Air Terminal/Gowen field",
-    "lat":"43.569263",
-    "lon":"-116.22193"
-  },
-  {
     "value":"BOS",
     "label":"General Edward Lawrence Logan International Airport",
     "lat":"42.36646",
@@ -15050,12 +15056,6 @@
     "label":"DeKalb Peachtree Airport",
     "lat":"33.875557",
     "lon":"-84.30194"
-  },
-  {
-    "value":"PDX",
-    "label":"Portland International Airport",
-    "lat":"45.588997",
-    "lon":"-122.5929"
   },
   {
     "value":"PFN",
