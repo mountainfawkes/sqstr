@@ -14,8 +14,8 @@ function App() {
 
   const headerStyles = { display: `flex`,
     flexDirection: `column`,
-    width: `100%`,
     zIndex: `100`,
+    width: `20px`,
     position: `fixed`,
     top: `0`,
     left: `0`,

@@ -87,7 +87,8 @@ export default () => {
       <div style={{
         display: `flex`,
         flexFlow: `column wrap`,
-        marginTop: `125px`,
+        zIndex: `100`,
+        marginTop: `150px`,
       }}
       >
         <Nav mainCallback={formCallback} />
