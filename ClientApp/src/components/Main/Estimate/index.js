@@ -84,7 +84,6 @@ export default ({ estimate }) => {
             textShadow: `1px 1px 10px #EDC9AF`,
             textDecoration: `none` }}
         >UPCO2</a> is {parseFloat(upco2Price).toLocaleString(`us-EN`, { style: `currency`, currency: `USD` })}.</p>
-        <p>At that price, expect the following levels of carbon investment to offset your activity:</p>
 
         <Links />
       </div>
