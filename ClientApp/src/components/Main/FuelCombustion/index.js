@@ -27,23 +27,66 @@ const fuelEstimateForm = ({ formCallback,
     estimateVisibilityCallback(true)
   }
 
+  const contentStyles = {
+    maxWidth: `45vw`,
+    margin: `auto`,
+    marginTop: `30px`,
+    padding: `10px`,
+    justifyContent: `center`,
+    alignItems: `center`,
+    backgroundColor: `#0A090C`,
+  }
+
+  const inputStyles = {
+    display: `block`,
+    margin: `5px`,
+  }
+
   return (
-    <div>
-      <h3>This is the fuel combustion form</h3>
-      <form onSubmit={handleFuelInput}>
-        <input type='hidden' name='type' value='fuel_combustion' />
-        <label htmlFor='fuel_source_type'>Type of fuel:
-          <select name='fuel_source_type'>
-            {fuels.map(fuel =>
-              <option value={fuel.code}>{fuel.name}</option>)}
-          </select>
-        </label>
-        <input type='hidden' name='fuel_source_unit' value='btu' />
-        <label htmlFor='fuel_source_value'>Amount used in BTU:
-          <input type='number' step='1' min='0' name='fuel_source_value' />
-        </label>
-        <button type='submit'>Estimate</button>
-      </form>
+    <div style={contentStyles}>
+      <div style={{
+        backgroundColor: `#131217`,
+        color: `#F5F5F5`,
+        padding: `15px`,
+        fontFamily: `'Montserrat', sans-serif`,
+      }}
+      >
+        <p>Use the form below to estimate your carbon offset by fuel burned.</p>
+        <form onSubmit={handleFuelInput}>
+          <input type='hidden' name='type' value='fuel_combustion' />
+          <div style={inputStyles}>
+            <label htmlFor='fuel_source_type'>Type of fuel:
+              <select
+                name='fuel_source_type'
+                style={{ margin: `0 0 0 10px` }}
+              >
+                {fuels.map(fuel =>
+                  <option value={fuel.code}>{fuel.name}</option>)}
+              </select>
+            </label>
+          </div>
+          <div style={inputStyles}>
+            <input
+              type='hidden'
+              name='fuel_source_unit'
+              value='btu'
+              style={{ margin: `0 0 0 10px` }}
+            />
+          </div>
+          <div style={inputStyles}>
+            <label htmlFor='fuel_source_value'>Amount used in BTU:
+              <input
+                type='number'
+                step='1'
+                min='0'
+                name='fuel_source_value'
+                style={{ margin: `0 0 0 10px` }}
+              />
+            </label>
+          </div>
+          <button type='submit' style={{ marginTop: `10px` }}>Estimate</button>
+        </form>
+      </div>
     </div>
   )
 }

@@ -1,14 +1,12 @@
 import { BrowserRouter as Router,
   Switch,
   Route } from 'react-router-dom'
-// import styled from 'styled-components'
 import Header from './Header'
 import About from './Main/About'
 import Splash from './Splash'
 import Main from './Main'
 import Footer from './Footer'
 import { getBackground } from '../img/backgrounds'
-// import logo from './logo.svg'
 // import './App.css'
 
 function App() {
@@ -32,9 +30,17 @@ function App() {
     left: `0`,
     margin: `0 0 0 20px`,
     padding: `20px`,
-    color: `#EDC9AF`,
-    textShadow: `1px 1px 10px #EDC9AF`,
+    color: `#F5F5F5`,
     fontSize: `.75em` }
+
+  const contentStyles = {
+    display: `flex`,
+    flexDirection: `column`,
+    maxWidth: `45vw`,
+    margin: `auto`,
+    justifyContent: `center`,
+    alignItems: `center`,
+  }
 
   return (
     <Router>
@@ -57,39 +63,20 @@ function App() {
 
         <Switch>
           <Route exact path='/'>
-            <div style={{
-              display: `flex`,
-              flexDirection: `column`,
-              maxWidth: `45vw`,
-              margin: `auto`,
-              justifyContent: `center`,
-              alignItems: `center`,
-            }}
-            >
+            <div style={contentStyles}>
               <Splash />
             </div>
           </Route>
           <Route path='/about'>
-            <div style={{
-              display: `flex`,
-              flexDirection: `column`,
-              maxWidth: `45vw`,
-              margin: `auto`,
+            <div style={{ ...contentStyles,
               padding: `10px`,
-              alignItems: `center`,
-              justifyContent: `center`,
-              backgroundColor: `#0A090C`,
-            }}
+              backgroundColor: `#0A090C` }}
             >
-              <About style={{ justifyContent: `center`,
-                alignItems: `center` }}
-              />
+              <About />
             </div>
           </Route>
           <Route path='/estimate'>
-            <Main style={{ justifyContent: `center`,
-              alignItems: `center` }}
-            />
+            <Main />
           </Route>
         </Switch>
 

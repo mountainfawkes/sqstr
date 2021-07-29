@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 export default ({ mainCallback }) => {
   const buttonStyle = { fontWeight: `bold`,
-    fontSize: `1.5em`,
+    fontSize: `1em`,
     margin: `5px`,
     padding: `10px`,
     borderRadius: `15px`,
@@ -25,31 +25,46 @@ export default ({ mainCallback }) => {
         onClick={() => mainCallback(0)}
         role='button'
         tabIndex={0}
-        style={{ ...buttonStyle, order: `0` }}
+        style={{ ...buttonStyle,
+          order: `0`,
+          color: `#EDC9AF`,
+          textShadow: `1px 1px 10px #EDC9AF` }}
       >Electricity</span>
       <span
         onClick={() => mainCallback(1)}
         role='button'
         tabIndex={0}
-        style={{ ...buttonStyle, order: `1` }}
+        style={{ ...buttonStyle,
+          order: `1`,
+          color: `#EDC9AF`,
+          textShadow: `1px 1px 10px #EDC9AF` }}
       >Flight</span>
       <span
         onClick={() => mainCallback(2)}
         role='button'
         tabIndex={0}
-        style={{ ...buttonStyle, order: `2` }}
+        style={{ ...buttonStyle,
+          order: `2`,
+          color: `#EDC9AF`,
+          textShadow: `1px 1px 10px #EDC9AF` }}
       >Shipping</span>
       <span
         onClick={() => mainCallback(3)}
         role='button'
         tabIndex={0}
-        style={{ ...buttonStyle, order: `3` }}
+        style={{ ...buttonStyle,
+          order: `3`,
+          color: `#EDC9AF`,
+          textShadow: `1px 1px 10px #EDC9AF` }}
       >Vehicle</span>
       <span
         onClick={() => mainCallback(4)}
         role='button'
         tabIndex={0}
-        style={{ ...buttonStyle, order: `4` }}
+        style={{ ...buttonStyle,
+          order: `4`,
+          color: `#EDC9AF`,
+          textShadow: `1px 1px 10px #EDC9AF` }}
       >Fuel Combustion</span>
     </div>
   )

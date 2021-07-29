@@ -15,15 +15,6 @@ export default () => {
   const [estimate, setEstimate] = useState(null)
   const [estimateVisible, toggleEstimateVisibility] = useState(false)
 
-  const contentStyles = {
-    display: `flex`,
-    flexDirection: `column`,
-    margin: `50px`,
-    width: `60%`,
-    background: `#131217`,
-    opacity: `75%`,
-  }
-
   const formCallback = useCallback(formSelection => {
     selectForm(formSelection)
   }, [])
@@ -94,24 +85,16 @@ export default () => {
     <>
       <div style={{
         display: `flex`,
-        flexFlow: `row wrap`,
+        flexFlow: `column wrap`,
         zIndex: `100`,
-        marginTop: `150px`,
+        marginTop: `200px`,
       }}
       >
         <Nav mainCallback={formCallback} />
+
+        {visibleState}
       </div>
 
-      <div style={{ display: `flex`,
-        flexDirection: `column`,
-        justifyContent: `center`,
-        alignItems: `center`,
-        alignContent: `center` }}
-      >
-        <div style={contentStyles}>
-          {visibleState}
-        </div>
-      </div>
     </>
   )
 }

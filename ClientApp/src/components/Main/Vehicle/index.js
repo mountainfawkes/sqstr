@@ -27,37 +27,78 @@ const vehicleEstimateForm = ({ formCallback,
     estimateVisibilityCallback(true)
   }
 
+  const contentStyles = {
+    maxWidth: `45vw`,
+    margin: `auto`,
+    marginTop: `30px`,
+    padding: `10px`,
+    justifyContent: `center`,
+    alignItems: `center`,
+    backgroundColor: `#0A090C`,
+  }
+
+  const inputStyles = {
+    display: `block`,
+    margin: `5px`,
+  }
+
   return (
-    <>
-      <h3>This is the vehicle travel form.</h3>
-      <form onSubmit={handleVehicleInput}>
-        <input type='hidden' name='type' value='vehicle' />
-        <label htmlFor='distance_unit'>Unit of distance:
-          <select name='distance_unit'>
-            <option value='mi'>Miles</option>
-            <option value='km'>Kilometers</option>
-          </select>
-        </label>
-        <label htmlFor='distance_value'>Distance traveled:
-          <input type='number' step='0.1' min='0.1' name='distance_value' />
-        </label>
-        <label htmlFor='vehicle_model_id'>Vehicle make and model:
-          <select name='vehicle_model_id'>
-            {yugos.map(yugo =>
-              <option value={yugo.id}>
-                {
+    <div style={contentStyles}>
+      <div style={{
+        backgroundColor: `#131217`,
+        color: `#F5F5F5`,
+        padding: `15px`,
+        fontFamily: `'Montserrat', sans-serif`,
+      }}
+      >
+        <p>Use this form to estimate your carbon offsets by vehicle travel.</p>
+        <form onSubmit={handleVehicleInput}>
+          <input type='hidden' name='type' value='vehicle' />
+          <div style={inputStyles}>
+            <label htmlFor='distance_unit'>Unit of distance:
+              <select
+                name='distance_unit'
+                style={{ margin: `0 0 0 10px` }}
+              >
+                <option value='mi'>Miles</option>
+                <option value='km'>Kilometers</option>
+              </select>
+            </label>
+          </div>
+          <div style={inputStyles}>
+            <label htmlFor='distance_value'>Distance traveled:
+              <input
+                type='number'
+                step='0.1'
+                min='0.1'
+                name='distance_value'
+                style={{ margin: `0 0 0 10px` }}
+              />
+            </label>
+          </div>
+          <div style={inputStyles}>
+            <label htmlFor='vehicle_model_id'>Vehicle make and model:
+              <select
+                name='vehicle_model_id'
+                style={{ margin: `0 0 0 10px` }}
+              >
+                {yugos.map(yugo =>
+                  <option value={yugo.id}>
+                    {
               yugo.attributes.year
               } {
               yugo.attributes.vehicle_make
               } {
               yugo.attributes.name
               }
-              </option>)}
-          </select>
-        </label>
-        <button type='submit'>Estimate</button>
-      </form>
-    </>
+                  </option>)}
+              </select>
+            </label>
+          </div>
+          <button type='submit' style={{ marginTop: `10px` }}>Estimate</button>
+        </form>
+      </div>
+    </div>
   )
 }
 
