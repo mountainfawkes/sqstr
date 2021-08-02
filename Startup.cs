@@ -71,11 +71,6 @@ namespace sqstr.Solution
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-
-                // Using RESTful conventions rather than custom routes; experiment with later
-                // endpoints.MapControllerRoute(
-                //     name: "default",
-                //     pattern: "{controller}/{action=Index}/{id?}");
             });
 
             app.UseSpa(spa =>
