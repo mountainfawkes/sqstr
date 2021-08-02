@@ -24,7 +24,7 @@ const flightEstimateForm = ({ formCallback,
       ],
     }
     console.log(data)
-    await fetch(`http://localhost:5000/api/Attributes`, {
+    await fetch(`/api/Attributes`, {
       method: `POST`,
       body: JSON.stringify(data),
       headers: {

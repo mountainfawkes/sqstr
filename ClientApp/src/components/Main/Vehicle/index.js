@@ -12,7 +12,7 @@ const vehicleEstimateForm = ({ formCallback,
       vehicle_model_id: event.target.vehicle_model_id.value,
     }
     console.log(data)
-    await fetch(`http://localhost:5000/api/Attributes`, {
+    await fetch(`/api/Attributes`, {
       method: `POST`,
       body: JSON.stringify(data),
       headers: {

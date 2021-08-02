@@ -13,7 +13,7 @@ const shippingEstimateForm = ({ formCallback,
       transport_method: event.target.transport_method.value,
     }
     console.log(data)
-    await fetch(`http://localhost:5000/api/Attributes`, {
+    await fetch(`/api/Attributes`, {
       method: `POST`,
       body: JSON.stringify(data),
       headers: {

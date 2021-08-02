@@ -12,7 +12,7 @@ const fuelEstimateForm = ({ formCallback,
       fuel_source_value: parseInt(event.target.fuel_source_value.value, 10),
     }
     console.log(data)
-    fetch(`http://localhost:5000/api/Attributes`, {
+    fetch(`/api/Attributes`, {
       method: `POST`,
       body: JSON.stringify(data),
       headers: {
