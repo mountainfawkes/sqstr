@@ -1,5 +1,9 @@
+using Azure.Core;
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
 using Newtonsoft.Json;
 using sqstr.Models;
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
@@ -9,11 +13,16 @@ namespace sqstr.Helpers
 {
   public class CarbonInterfaceHelper
   {
-    static readonly string auth = "Bearer " + EnvironmentVariables.CarbonInterfaceBearerToken;
     static readonly string url = "https://www.carboninterface.com/api/v1/estimates";
 
     public static async Task<HttpResponseMessage> CarbonInterfaceCall(AttributesRequest request)
     {
+      string kvUri = "https://sqstr-key-vault.vault.azure.net/secrets";
+      var client = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
+      var secret = await client.GetSecretAsync("CarbonInterfaceBearerToken");
+      
+      string auth = "Bearer " + secret;
+
       var json = JsonConvert.SerializeObject(request);
       var content = new StringContent(json, Encoding.UTF8, "application/json");
       HttpClient httpClient = new HttpClient();
