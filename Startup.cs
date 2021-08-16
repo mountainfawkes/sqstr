@@ -22,7 +22,8 @@ namespace sqstr.Solution
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddDbContext<SqstrContext>(opt => opt.UseMySql(Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(Configuration["ConnectionStrings:DefaultConnection"])));
+            services.AddControllersWithViews();     // Compare with services.AddControllers();
+            services.AddDbContext<SqstrContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("MyDbConnection")));
             services.AddCors(options => 
             {
                 options.AddPolicy(name: "defaultPolicy",
@@ -33,7 +34,6 @@ namespace sqstr.Solution
                             .AllowAnyHeader();
                     });
             });
-            services.AddControllersWithViews();     // Compare with services.AddControllers();
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

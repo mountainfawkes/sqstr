@@ -1,10 +1,9 @@
 ﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace sqstr.Solution.Migrations
 {
-    public partial class ReframeDataStructureToResponse : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,28 +12,28 @@ namespace sqstr.Solution.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Carbon_G = table.Column<int>(type: "int", nullable: false),
-                    Carbon_Lb = table.Column<double>(type: "double", nullable: false),
-                    Carbon_Kg = table.Column<double>(type: "double", nullable: false),
-                    Carbon_Mt = table.Column<double>(type: "double", nullable: false),
-                    Country = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
-                    Distance_Unit = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
-                    Distance_Value = table.Column<double>(type: "double", nullable: false),
-                    Estimated_At = table.Column<DateTime>(type: "datetime(6)", nullable: false),
-                    Electricity_Unit = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
-                    Electricity_Value = table.Column<double>(type: "double", nullable: false),
-                    Fuel_Source_Type = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
-                    Fuel_Source_Unit = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
-                    Fuel_Source_Value = table.Column<int>(type: "int", nullable: false),
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Carbon_G = table.Column<long>(type: "bigint", nullable: false),
+                    Carbon_Lb = table.Column<double>(type: "float", nullable: false),
+                    Carbon_Kg = table.Column<double>(type: "float", nullable: false),
+                    Carbon_Mt = table.Column<double>(type: "float", nullable: false),
+                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Distance_Unit = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Distance_Value = table.Column<double>(type: "float", nullable: false),
+                    Estimated_At = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Electricity_Unit = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Electricity_Value = table.Column<double>(type: "float", nullable: false),
+                    Fuel_Source_Type = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Fuel_Source_Unit = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Fuel_Source_Value = table.Column<double>(type: "float", nullable: false),
                     Passengers = table.Column<int>(type: "int", nullable: false),
-                    State = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
-                    Transport_Method = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
-                    Vehicle_Make = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
-                    Vehicle_Model = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
+                    State = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Transport_Method = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Vehicle_Make = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Vehicle_Model = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Vehicle_Year = table.Column<int>(type: "int", nullable: false),
-                    Weight_Value = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
-                    Weight_Unit = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true)
+                    Weight_Value = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Weight_Unit = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -46,10 +45,10 @@ namespace sqstr.Solution.Migrations
                 columns: table => new
                 {
                     PriceId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Currency = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
-                    LatestPrice = table.Column<double>(type: "double", nullable: false),
-                    PriceDate = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Currency = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LatestPrice = table.Column<double>(type: "float", nullable: false),
+                    PriceDate = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -61,9 +60,9 @@ namespace sqstr.Solution.Migrations
                 columns: table => new
                 {
                     DataId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Id = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
-                    Type = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Type = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AttributesId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -81,15 +80,15 @@ namespace sqstr.Solution.Migrations
                 name: "Legs",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Departure_Airport = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
-                    Destination_Airport = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
+                    LegsId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Departure_Airport = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Destination_Airport = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AttributesId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Legs", x => x.Id);
+                    table.PrimaryKey("PK_Legs", x => x.LegsId);
                     table.ForeignKey(
                         name: "FK_Legs_Attributes_AttributesId",
                         column: x => x.AttributesId,
@@ -102,13 +101,21 @@ namespace sqstr.Solution.Migrations
                 name: "Roots",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    DataId = table.Column<int>(type: "int", nullable: true)
+                    RootId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DataId = table.Column<int>(type: "int", nullable: true),
+                    Currency = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Symbol = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Price = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Price_Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Price_Timestamp = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    High = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    High_Timestamp = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Roots", x => x.Id);
+                    table.PrimaryKey("PK_Roots", x => x.RootId);
                     table.ForeignKey(
                         name: "FK_Roots_Data_DataId",
                         column: x => x.DataId,

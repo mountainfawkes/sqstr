@@ -17,11 +17,12 @@ namespace sqstr.Helpers
 
     public static async Task<HttpResponseMessage> CarbonInterfaceCall(AttributesRequest request)
     {
-      string kvUri = "https://sqstr-key-vault.vault.azure.net/secrets";
-      var client = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
-      var secret = await client.GetSecretAsync("CarbonInterfaceBearerToken");
+      // string kvUri = "https://sqstr-key-vault.vault.azure.net/secrets";
+      // var client = new SecretClient(new Uri(kvUri), new DefaultAzureCredential());
+      // var secret = await client.GetSecretAsync("CarbonInterfaceBearerToken");
       
-      string auth = "Bearer " + secret;
+      string carbonInterfaceBearerToken = "TscZeUz1FIALEBm279jxw";
+      string auth = "Bearer " + carbonInterfaceBearerToken;
 
       var json = JsonConvert.SerializeObject(request);
       var content = new StringContent(json, Encoding.UTF8, "application/json");

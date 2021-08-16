@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using sqstr.Models;
@@ -9,84 +10,86 @@ using sqstr.Models;
 namespace sqstr.Solution.Migrations
 {
     [DbContext(typeof(SqstrContext))]
-    [Migration("20210724224315_NomicsRootProps")]
-    partial class NomicsRootProps
+    [Migration("20210816044152_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Relational:MaxIdentifierLength", 64)
-                .HasAnnotation("ProductVersion", "5.0.0");
+                .UseIdentityColumns()
+                .HasAnnotation("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation("ProductVersion", "5.0.9");
 
             modelBuilder.Entity("sqstr.Models.Attributes", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
-                    b.Property<int>("Carbon_G")
-                        .HasColumnType("int");
+                    b.Property<long>("Carbon_G")
+                        .HasColumnType("bigint");
 
                     b.Property<double>("Carbon_Kg")
-                        .HasColumnType("double");
+                        .HasColumnType("float");
 
                     b.Property<double>("Carbon_Lb")
-                        .HasColumnType("double");
+                        .HasColumnType("float");
 
                     b.Property<double>("Carbon_Mt")
-                        .HasColumnType("double");
+                        .HasColumnType("float");
 
                     b.Property<string>("Country")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Distance_Unit")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Distance_Value")
-                        .HasColumnType("double");
+                        .HasColumnType("float");
 
                     b.Property<string>("Electricity_Unit")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Electricity_Value")
-                        .HasColumnType("double");
+                        .HasColumnType("float");
 
                     b.Property<DateTime>("Estimated_At")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Fuel_Source_Type")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Fuel_Source_Unit")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Fuel_Source_Value")
-                        .HasColumnType("int");
+                    b.Property<double>("Fuel_Source_Value")
+                        .HasColumnType("float");
 
                     b.Property<int>("Passengers")
                         .HasColumnType("int");
 
                     b.Property<string>("State")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Transport_Method")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Vehicle_Make")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Vehicle_Model")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Vehicle_Year")
                         .HasColumnType("int");
 
                     b.Property<string>("Weight_Unit")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Weight_Value")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -97,16 +100,17 @@ namespace sqstr.Solution.Migrations
                 {
                     b.Property<int>("DataId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<int?>("AttributesId")
                         .HasColumnType("int");
 
                     b.Property<string>("Id")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Type")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("DataId");
 
@@ -117,20 +121,21 @@ namespace sqstr.Solution.Migrations
 
             modelBuilder.Entity("sqstr.Models.Leg", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("LegsId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
-                    b.Property<int>("AttributesId")
+                    b.Property<int?>("AttributesId")
                         .HasColumnType("int");
 
                     b.Property<string>("Departure_Airport")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Destination_Airport")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("LegsId");
 
                     b.HasIndex("AttributesId");
 
@@ -141,16 +146,17 @@ namespace sqstr.Solution.Migrations
                 {
                     b.Property<int>("PriceId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<string>("Currency")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("LatestPrice")
-                        .HasColumnType("double");
+                        .HasColumnType("float");
 
                     b.Property<string>("PriceDate")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("PriceId");
 
@@ -159,38 +165,39 @@ namespace sqstr.Solution.Migrations
 
             modelBuilder.Entity("sqstr.Models.Root", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("RootId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<string>("Currency")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("DataId")
                         .HasColumnType("int");
 
                     b.Property<string>("High")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("High_Timestamp")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Name")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Price")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Price_Date")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime>("Price_Timestamp")
-                        .HasColumnType("datetime(6)");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Symbol")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("RootId");
 
                     b.HasIndex("DataId");
 
@@ -208,13 +215,9 @@ namespace sqstr.Solution.Migrations
 
             modelBuilder.Entity("sqstr.Models.Leg", b =>
                 {
-                    b.HasOne("sqstr.Models.Attributes", "Attributes")
+                    b.HasOne("sqstr.Models.Attributes", null)
                         .WithMany("Legs")
-                        .HasForeignKey("AttributesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Attributes");
+                        .HasForeignKey("AttributesId");
                 });
 
             modelBuilder.Entity("sqstr.Models.Root", b =>
